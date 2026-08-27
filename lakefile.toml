@@ -1,6 +1,6 @@
 name = "s6"
 version = "0.1.0"
-defaultTargets = ["S6Shortcuts"]
+defaultTargets = ["S6Shortcuts", "S6"]
 
 [[require]]
 name = "mathlib"
