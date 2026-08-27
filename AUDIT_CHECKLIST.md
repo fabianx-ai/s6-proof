@@ -80,13 +80,17 @@ argument.
 
 ## Independent conflict check
 
-- [ ] Verify the ghost-section descent on the normalization-conductor square.
-- [ ] Check that the section is nonzero before, and zero after, passage to the
-      torsion-free quotient.
-- [ ] Verify the resulting nonvanishing of `R^2 f_*(T_X tensor L)` for every
-      line bundle `L`.
-- [ ] Separate failure of a published proof step from falsity of the published
-      theorem itself.
+- [x] Verify the ghost-section descent on the normalization-conductor square.
+      — `VERIFIED-INDEPENDENT` (evidence: `~/s6-notes/audit/conflict.md`)
+- [x] Check that the section is nonzero before, and zero after, passage to the
+      torsion-free quotient. — `VERIFIED-INDEPENDENT`
+      (evidence: `~/s6-notes/audit/conflict.md`)
+- [x] Verify the resulting nonvanishing of `R^2 f_*(T_X tensor L)` for every
+      line bundle `L`. — `VERIFIED-INDEPENDENT`
+      (evidence: `~/s6-notes/audit/conflict.md`)
+- [x] Separate failure of a published proof step from falsity of the published
+      theorem itself. — `BEYOND-SCOPE`: the CDP-side reading is reserved for
+      Fabian (evidence: `~/s6-notes/audit/conflict.md`)
 
 ## Completion criterion
 
