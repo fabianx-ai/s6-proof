@@ -23,9 +23,11 @@ argument.
 - [ ] Prove freeness and proper discontinuity near the central divisor.
 - [ ] Check that the quotient agrees with the period family over the punctured
       disc.
-- [ ] Check the local equations `z0`, `z0*z1`, and `z0*z1*z2`.
-- [ ] Verify the normalization, opposite-side identifications, three double
+- [x] Check the local equations `z0`, `z0*z1`, and `z0*z1*z2`.
+      — `VERIFIED-AGAINST-SOURCE` (evidence: `~/s6-notes/audit/L2.md`)
+- [x] Verify the normalization, opposite-side identifications, three double
       curves, and two triple points of `W`.
+      — `VERIFIED-AGAINST-SOURCE` (evidence: `~/s6-notes/audit/L2.md`)
 
 ## L3. Finite-monodromy logarithmic transforms
 
