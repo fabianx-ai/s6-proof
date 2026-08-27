@@ -7,7 +7,7 @@ complex structure on the smooth six-sphere.
 
 - `s6_short_proof.tex` - publication-ready LaTeX source.
 - `s6_short_proof.pdf` - compiled 20-page paper.
-- `s6_short_proof_v2.pdf` - version 2 (27 Aug 2026): dual-proof section 5 (blackboard
+- `s6_short_proof_v2.tex`, `s6_short_proof_v2.pdf` - version 2 (27 Aug 2026): dual-proof section 5 (blackboard
   proof closes), residue register 4.9, lessons 6.12. Sections renumbered vs v1
   (formalization interfaces now 6.9, open directions now section 7); the section-6
   lemma statements targeted by the Lean development are unchanged.
