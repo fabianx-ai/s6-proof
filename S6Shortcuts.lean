@@ -1,4 +1,6 @@
-/--
+import Mathlib
+
+/-!
 Finite certificates for the proposed (3,4,infinity) complex six-sphere construction.
 
 Scope:
@@ -13,8 +15,6 @@ Scope:
 The analytic construction of the torus family, toric quotient, logarithmic
 transforms, and integral nearby-cycle package is intentionally outside this file.
 -/
-
-import Mathlib
 
 open Matrix
 open scoped Matrix
@@ -222,7 +222,6 @@ theorem defect_of_projected_seed (m n : ℤ) :
 theorem consecutive_order_defect (m : ℤ) :
     defect m (m + 1) 0 1 (-1) = -1 := by
   simp [defect]
-  ring
 
 theorem defect_three_four : defect 3 4 0 1 (-1) = -1 := by
   norm_num [defect]
