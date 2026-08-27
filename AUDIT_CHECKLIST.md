@@ -57,18 +57,26 @@ argument.
 
 ## L4. Integral specialization and Leray
 
-- [ ] Verify the nearby-cycle calculation at the cusp independently of the
-      geometric collapse map.
-- [ ] Verify all specialization lattices at the two finite points.
-- [ ] Check the index-two degree-two specialization at the order-four fibre.
-- [ ] Confirm the generators `12 gamma`, `2q`, and `2 gamma u w`.
-- [ ] Recompute the three local discrepancies and their signs.
-- [ ] Verify that the first transgression is multiplication by
-      `p = 12*l0 - 4*l1 - 3*l2`.
-- [ ] Verify multiplicativity and the common sign of the next two
-      transgressions.
-- [ ] Confirm that no other differential or extension can alter the middle
-      integral cohomology.
+- [x] Verify the nearby-cycle calculation at the cusp independently of the
+      geometric collapse map. — `VERIFIED-AGAINST-SOURCE`
+      (evidence: `~/s6-notes/audit/L4.md`)
+- [x] Verify all specialization lattices at the two finite points.
+      — `VERIFIED-AGAINST-SOURCE` (evidence: `~/s6-notes/audit/L4.md`)
+- [x] Check the index-two degree-two specialization at the order-four fibre.
+      — `VERIFIED-AGAINST-SOURCE` (evidence: `~/s6-notes/audit/L4.md`)
+- [x] Confirm the generators `12 gamma`, `2q`, and `2 gamma u w`.
+      — `VERIFIED-AGAINST-SOURCE` (evidence: `~/s6-notes/audit/L4.md`)
+- [x] Recompute the three local discrepancies and their signs.
+      — `VERIFIED-AGAINST-SOURCE` (evidence: `~/s6-notes/audit/L4.md`)
+- [x] Verify that the first transgression is multiplication by
+      `p = 12*l0 - 4*l1 - 3*l2`. — `VERIFIED-AGAINST-SOURCE`
+      (evidence: `~/s6-notes/audit/L4.md`)
+- [x] Verify multiplicativity and the common sign of the next two
+      transgressions. — `VERIFIED-AGAINST-SOURCE`
+      (evidence: `~/s6-notes/audit/L4.md`)
+- [x] Confirm that no other differential or extension can alter the middle
+      integral cohomology. — `VERIFIED-AGAINST-SOURCE`
+      (evidence: `~/s6-notes/audit/L4.md`)
 
 ## Independent conflict check
 
