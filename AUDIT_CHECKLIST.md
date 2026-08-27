@@ -22,12 +22,17 @@ argument.
 
 ## L2. Cusp normal form and toric quotient
 
-- [ ] Derive the normal form `[s B0 + C(tc) | I]` from the period functions.
-- [ ] Verify that `C(tc)` extends holomorphically across `tc = 0`.
-- [ ] Verify the corrected lattice action on the infinite `A2` toric threefold.
-- [ ] Prove freeness and proper discontinuity near the central divisor.
-- [ ] Check that the quotient agrees with the period family over the punctured
-      disc.
+- [x] Derive the normal form `[s B0 + C(tc) | I]` from the period functions.
+      — `VERIFIED-AGAINST-SOURCE` (evidence: `~/s6-notes/audit/L2.md`)
+- [x] Verify that `C(tc)` extends holomorphically across `tc = 0`.
+      — `VERIFIED-AGAINST-SOURCE` (evidence: `~/s6-notes/audit/L2.md`)
+- [x] Verify the corrected lattice action on the infinite `A2` toric threefold.
+      — `VERIFIED-AGAINST-SOURCE` (evidence: `~/s6-notes/audit/L2.md`)
+- [x] Prove freeness and proper discontinuity near the central divisor.
+      — `VERIFIED-AGAINST-SOURCE` (evidence: `~/s6-notes/audit/L2.md`)
+- [x] Check that the quotient agrees with the period family over the punctured
+      disc. — `VERIFIED-AGAINST-SOURCE`
+      (evidence: `~/s6-notes/audit/L2.md`)
 - [x] Check the local equations `z0`, `z0*z1`, and `z0*z1*z2`.
       — `VERIFIED-AGAINST-SOURCE` (evidence: `~/s6-notes/audit/L2.md`)
 - [x] Verify the normalization, opposite-side identifications, three double
