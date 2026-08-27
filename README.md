@@ -13,8 +13,6 @@ complex structure on the smooth six-sphere.
 - `verification-report.txt` - output from the successful exact check.
 - `AUDIT_CHECKLIST.md` - the remaining analytic and integral verification
   boundary, organized for independent review.
-- `source-distillation.tex.txt` - the user-supplied TeX distillation used as a
-  source document.
 
 ## Mathematical status
 
