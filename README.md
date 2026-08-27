@@ -7,6 +7,10 @@ complex structure on the smooth six-sphere.
 
 - `s6_short_proof.tex` - publication-ready LaTeX source.
 - `s6_short_proof.pdf` - compiled 20-page paper.
+- `s6_short_proof_v2.pdf` - version 2 (27 Aug 2026): dual-proof section 5 (blackboard
+  proof closes), residue register 4.9, lessons 6.12. Sections renumbered vs v1
+  (formalization interfaces now 6.9, open directions now section 7); the section-6
+  lemma statements targeted by the Lean development are unchanged.
 - `S6Shortcuts.lean` - a no-placeholder Lean scaffold for the finite matrix and
   arithmetic certificates.
 - `verify_certificates.py` - exact SymPy verification of the same finite core.
@@ -86,3 +90,7 @@ finite matrices, `native_decide`, `norm_num`, and `ring`; it contains no `sorry`
 The files are prepared for public review. No copyright license has been selected
 on the authors' behalf; add the intended license before publishing or opening a
 public repository.
+
+Note: `SHA256SUMS` attests the current tree. `S6Shortcuts.lean` was minimally
+repaired after delivery (import ordering; see commit eb4dcf4); the originally
+delivered file and its hash are preserved in git history at commit d13b8f3.
