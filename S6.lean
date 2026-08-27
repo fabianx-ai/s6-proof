@@ -1,4 +1,5 @@
 import S6.CyclicAverage
+import S6.SquareZeroExchange
 
 /-!
 # Reusable algebraic core for the s6 short-proof repository
