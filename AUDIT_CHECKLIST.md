@@ -31,13 +31,19 @@ argument.
 
 ## L3. Finite-monodromy logarithmic transforms
 
-- [ ] Verify that the projected twist vectors lie in the integral fixed lattices.
-- [ ] Verify primitivity and the exact freeness congruences for orders 3 and 4.
-- [ ] Check the sign convention for `v2 = -epsilonPrime`.
-- [ ] Check the logarithmic sections and branch independence on the punctured
-      discs.
-- [ ] Verify smoothness of the quotients and exact multiplicities `3S1`, `4S2`.
-- [ ] Verify the Bagnera-de Franchis types of the reduced fibres.
+- [x] Verify that the projected twist vectors lie in the integral fixed lattices.
+      — `VERIFIED-INDEPENDENT` (evidence: `~/s6-notes/audit/L3.md`)
+- [x] Verify primitivity and the exact freeness congruences for orders 3 and 4.
+      — `VERIFIED-AGAINST-SOURCE` (evidence: `~/s6-notes/audit/L3.md`)
+- [x] Check the sign convention for `v2 = -epsilonPrime`.
+      — `VERIFIED-AGAINST-SOURCE` (evidence: `~/s6-notes/audit/L3.md`)
+- [x] Check the logarithmic sections and branch independence on the punctured
+      discs. — `VERIFIED-INDEPENDENT` (evidence: `~/s6-notes/audit/L3.md`)
+- [x] Verify smoothness of the quotients and exact multiplicities `3S1`, `4S2`.
+      — `VERIFIED-INDEPENDENT` (evidence: `~/s6-notes/audit/L3.md`)
+- [x] Verify the Bagnera-de Franchis types of the reduced fibres.
+      — `VERIFIED-AGAINST-SOURCE`: `(Z/3)^2` and `Z/4 x Z/2`
+      (evidence: `~/s6-notes/audit/L3.md`)
 
 ## L4. Integral specialization and Leray
 
