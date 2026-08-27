@@ -6,14 +6,19 @@ argument.
 
 ## L1. Open period family
 
-- [ ] Verify the triangle-group relations for `T1`, `T2`, and `T0`.
-- [ ] Verify the transformation laws for `tau`, `mu`, and `beta`.
-- [ ] Check the torsor identifications with `O(-1)` and `O` on `P^1`.
-- [ ] Check existence and uniqueness from the relevant `H^1` and `H^0` groups.
-- [ ] Prove the global lattice inequality after choosing `Im(c0)` sufficiently
-      negative.
-- [ ] Verify proper holomorphic descent of the two-torus family over the
-      thrice-punctured base.
+- [x] Verify the triangle-group relations for `T1`, `T2`, and `T0`.
+      — `VERIFIED-INDEPENDENT` (evidence: `~/s6-notes/audit/L1.md`)
+- [x] Verify the transformation laws for `tau`, `mu`, and `beta`.
+      — `VERIFIED-AGAINST-SOURCE` (evidence: `~/s6-notes/audit/L1.md`)
+- [x] Check the torsor identifications with `O(-1)` and `O` on `P^1`.
+      — `VERIFIED-AGAINST-SOURCE` (evidence: `~/s6-notes/audit/L1.md`)
+- [x] Check existence and uniqueness from the relevant `H^1` and `H^0` groups.
+      — `VERIFIED-AGAINST-SOURCE` (evidence: `~/s6-notes/audit/L1.md`)
+- [x] Prove the global lattice inequality after choosing `Im(c0)` sufficiently
+      negative. — `VERIFIED-INDEPENDENT` (evidence: `~/s6-notes/audit/L1.md`)
+- [x] Verify proper holomorphic descent of the two-torus family over the
+      thrice-punctured base. — `VERIFIED-INDEPENDENT`
+      (evidence: `~/s6-notes/audit/L1.md`)
 
 ## L2. Cusp normal form and toric quotient
 
