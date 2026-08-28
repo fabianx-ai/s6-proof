@@ -1473,9 +1473,9 @@ Before replacing a sheaf on a non-normal space by a torsion-free quotient or by 
 
 \subsection{Formalization interfaces and current status}\label{sec:formalization}
 
-\subsubsection{The algebraic source and pending V10 rebuild}
+\subsubsection{The algebraic source and verified V10 rebuild}
 
-Source, audit evidence, and reproduction instructions are maintained at \url{https://github.com/fabianx-ai/s6-proof}. The V10 bundle contains a proposed refactor of the concrete finite certificates that removes every use of \texttt{native\_decide} in favour of kernel-reducible proof scripts. Its mathematical scope remains deliberately modular:
+Source, audit evidence, and reproduction instructions are maintained at \url{https://github.com/fabianx-ai/s6-proof}. The V10 bundle contains a verified refactor of the concrete finite certificates that removes every use of \texttt{native\_decide} in favour of explicit kernel-checked proof scripts. Its mathematical scope remains deliberately modular:
 \begin{itemize}
 \item \texttt{CyclicAverage}: finite cyclic averaging, fixed-subspace projection, and preservation of invariant observables;
 \item \texttt{SquareZeroExchange}: the law $E_sE_t=E_{s+t}$, inverse $E_{-s}$, and conservation of bilinear forms;
@@ -1486,7 +1486,12 @@ Source, audit evidence, and reproduction instructions are maintained at \url{htt
 \item \texttt{S6Shortcuts}: the concrete matrices, projectors, twists, inverse matrices, defect, and Euler arithmetic.
 \end{itemize}
 
-\textbf{PLACEHOLDER (formal release gate).} Before publication, run the pinned clean build and the per-theorem axiom audit described in \texttt{formal/BUILD\_REPORT\_V10.md}; replace this paragraph with the verified commit, toolchain, source-tree hash, build result, and axiom report. Until that gate is closed, V10 makes no claim that the refactored Lean tree compiles.
+\textbf{Verified formal release gate.}
+At Git commit \texttt{b6220d0fd6b301b2df2082a91885513945126f45}, the pinned clean build completed successfully with exit code zero (\texttt{Build completed successfully (8517 jobs).}) under Lean~4.31.0-rc1, Lean commit \texttt{fd009949156901e6cf15b6d9bf1122294b8e697a}, and Mathlib commit \texttt{0531bb79fea20efc9ce6942db46b96be5a919400}. The aggregate SHA-256 digest of \texttt{formal/SOURCE\_TREE\_V10.sha256} was
+\[
+\texttt{37d55a7a16aa29bf11cc291bdca8a20c98192bb18883b5da171bc25c449a55f1}.
+\]
+The 62-name per-theorem audit completed successfully; the union of reported axioms was \texttt{\{propext, Classical.choice, Quot.sound\}}, with no generated computation/compiler-trust axiom. Complete output is preserved in \texttt{formal/lean-build-v10.log}, \texttt{formal/AXIOM\_REPORT\_V10.txt}, and \texttt{formal/BUILD\_REPORT\_V10.md}.
 
 The semantic boundaries are unchanged. First, \texttt{UnitTransgression} assumes the repaired filtration data; it does not derive the Leray page from nearby cycles. Second, the current gluing file proves that the literal presented group is abelian and separately classifies the integral relation cokernel, but it does not yet contain an equivalence identifying those two formal objects. The elementary group proof in \cref{thm:gluing-group} is therefore still the paper-level bridge.
 
@@ -1515,7 +1520,7 @@ The natural library order is therefore
 \text{formal recognition theorem}.
 \end{gathered}
 \]
-The first layer is encoded. Its V10 trust-boundary rebuild remains the \textbf{PLACEHOLDER} gate above. The next load-bearing Lean theorem is an explicit equivalence between the presented gluing group and its classified relation cokernel.
+The first layer is encoded, and its V10 trust-boundary rebuild has passed as recorded above. The next load-bearing Lean theorem is an explicit equivalence between the presented gluing group and its classified relation cokernel.
 
 \subsection{Finite certificates at a glance}\label{sec:certificates}
 
@@ -1554,14 +1559,14 @@ One controls local components; the other controls global topology.
 \toprule
 Statement & Paper location & Companion Lean status\\
 \midrule
-Orders of $T_1,T_2$; square-zero $N$ & \cref{sec:lattice} & V10 source encoded; build pending\\
-Invariant pairing and exchange conservation & \cref{sec:lattice} & V10 helper and instance encoded; build pending\\
-Explicit $P_3,P_4$ and projected directions & \cref{sec:projectors} & V10 helper and instance encoded; build pending\\
-$B_0$ determinant-one orbit quotient & \cref{eq:B0,lem:component-index} & V10 theorem encoded; build pending\\
-Generic defect and consecutive-order identity & \cref{thm:gluing-group,cor:consecutive} & V10 arithmetic encoded; build pending\\
+Orders of $T_1,T_2$; square-zero $N$ & \cref{sec:lattice} & V10 source encoded; pinned build verified\\
+Invariant pairing and exchange conservation & \cref{sec:lattice} & V10 helper and instance encoded; pinned build verified\\
+Explicit $P_3,P_4$ and projected directions & \cref{sec:projectors} & V10 helper and instance encoded; pinned build verified\\
+$B_0$ determinant-one orbit quotient & \cref{eq:B0,lem:component-index} & V10 theorem encoded; pinned build verified\\
+Generic defect and consecutive-order identity & \cref{thm:gluing-group,cor:consecutive} & V10 arithmetic encoded; pinned build verified\\
 Literal presented group $\leftrightarrow$ relation cokernel & \cref{thm:gluing-group} & equivalence still to be added\\
-Low-degree unit filtration bookkeeping & \cref{lem:unit-transgression} & V10 consumer encoded; build pending\\
-Split-extension coinvariants & \cref{lem:split-extension} & V10 theorem encoded; build pending\\
+Low-degree unit filtration bookkeeping & \cref{lem:unit-transgression} & V10 consumer encoded; pinned build verified\\
+Split-extension coinvariants & \cref{lem:split-extension} & V10 theorem encoded; pinned build verified\\
 Analytic period family and three fillings & $\LCP$(L1)--(L3) & source theorems; not formalized\\
 Global assembly and boundary maps & $\LCP$(L4)--(L5) & source theorems; not formalized\\
 Nearby cycles and integral Leray & $\LCP$(L6) & source theorem; not formalized\\

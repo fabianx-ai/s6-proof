@@ -1,8 +1,8 @@
 # Version 10 verification report
 
-## Paper build
+## Bundled PDF receipt
 
-- LaTeX engine: pdfTeX 1.40.26 through latexmk 4.86.
+- The incoming bundle records LaTeX engine pdfTeX 1.40.26 through latexmk 4.86.
 - Result: successful build, 29 A4 pages.
 - LaTeX diagnostics: no unresolved references, undefined citations, overfull boxes, or underfull boxes.
 - PDF preflight: openable, unencrypted, text-based, no forms, all fonts embedded.
@@ -12,6 +12,8 @@
 
 - `checks/verify_certificates.py`: all 21 exact finite certificates passed.
 - `checks/audit_checks.py`: all named arithmetic and symbolic audit blocks passed.
+- Both were run with Python 3.12.3 and SymPy 1.12 in `/tmp/s6-verifier-venv`; the ambient system Python lacked
+  SymPy and was not used as evidence for these two checks.
 - These checks do not substitute for L1-L6.
 
 ## Source-interface patch
@@ -21,18 +23,40 @@ Proposition 7.14, the CDP non-torsion proviso, the free parameter `c0`, and the 
 bases. The supplied Claude Fable review is archived under `audits/reviews/`; L1, L5, L6, and CDP remain marked
 `PATCH` for a final V10 source-fidelity reread.
 
-## Formal source refactor
+## Formal source repair
 
-- `checks/formal-source-scan.txt`: 32 proposed `decide` proofs; no current `native_decide`, `sorry`, `admit`, or `unsafe` matches.
+- The incoming bundle contained 32 bare `decide` replacements. The first pinned build emitted 22 failure
+  diagnostics in `S6Shortcuts`; all 32 bare sites were then replaced uniformly, without changing theorem
+  statements, using explicit extensionality, finite case splits, and `norm_num`.
+- `checks/formal-source-scan.txt`: zero current `decide` or native-computation tactic invocations and no
+  `sorry`, `admit`, custom axiom/constant declaration, or `unsafe` declaration.
 - `formal/SOURCE_TREE_V10.sha256`: per-file manifest for the modified Lean source.
-- Static scans are not a substitute for compilation or a kernel axiom report.
+- Static scans are supplemented by the pinned build and per-theorem axiom report below.
 
-## Formal build gate
+## Formal build verification
 
-**PLACEHOLDER:** the modified V10 Lean source was not compiled in this environment. The current bundle contains
-proposed `decide` replacements, a source-tree hash, and an axiom-audit driver. Codex must close the build and
-axiom fields in `formal/BUILD_REPORT_V10.md` before publication. Historical successful build evidence is
-preserved separately and does not attest V10.
+- Built-source Git commit: `b6220d0fd6b301b2df2082a91885513945126f45`.
+- Pinned toolchain: Lean 4.31.0-rc1 at commit `fd009949156901e6cf15b6d9bf1122294b8e697a`; Mathlib
+  `0531bb79fea20efc9ce6942db46b96be5a919400`.
+- Aggregate source-tree digest: `37d55a7a16aa29bf11cc291bdca8a20c98192bb18883b5da171bc25c449a55f1`.
+- Clean-source/cache-hydrated `lake build`: exit code `0`; `Build completed successfully (8517 jobs).`
+- The axiom driver exited `0` and produced exactly 62 distinct named records. Their union was
+  `{propext, Classical.choice, Quot.sound}`.
+- No generated computation/compiler-trust axiom was reported; both the prescribed scan and a stronger scan for
+  generated reduction/native/sorry axioms returned no matches.
+- Complete evidence is in `formal/lean-build-v10.log`, `formal/AXIOM_REPORT_V10.txt`, and
+  `formal/BUILD_REPORT_V10.md`.
+
+The release gate exposed a real bundle defect before passing: the first build at
+`c9d6263e7018b4273c82942c10b2ab9baf5d1594` exited `1` after 22 bare-`decide` failures in rational matrix
+goals. Repair commit `9ba64114f017016be81f55cd0a0c4e6cdffbd740` replaced all 32 bare sites with
+explicit kernel-checked proofs. Commit `cb2adf25c8f79e67c5805d71defe8afcf50d4cf2` corrected the hashed
+proof-method description, and `b6220d0fd6b301b2df2082a91885513945126f45` corrected the clean/cache/build
+reproduction order; the final clean-source build and axiom run use the latter commit.
+
+This verifies the reusable algebraic interfaces and finite certificates named by the audit driver. It does not
+formalize the analytic and geometric construction package, and it does not fill the explicit equivalence
+between the literal presented gluing group and its classified relation cokernel.
 
 ## Source identity
 
@@ -41,9 +65,17 @@ The external source remains pinned at SHA-256:
 `283bba102dd1d5dc346af81b28145bdaaea6654398d5032e76e97bafb9a858f2`
 
 Raw source bytes are not redistributed. `checks/verify_source_identity.py` checks internal metadata consistency
-and optionally verifies a local copy byte-for-byte.
+and optionally verifies a local copy byte-for-byte. On this host it also passed against the seated source PDF at
+the pinned hash above.
 
-## Publication placeholders
+## TeX/PDF release status
 
-Run `python checks/scan_placeholders.py` for the complete current list (29 marker occurrences in this pre-publication bundle). The final Zenodo candidate must make
-`python checks/scan_placeholders.py --require-zero` exit successfully.
+**TeX gate closed; PDF rebuild pending on Fabian's side; the shipped PDF still carries the former gate
+paragraph.** No LaTeX toolchain was available on the verification host, so the PDF was intentionally left
+untouched. The frozen PDF receipts under `checks/` were likewise not represented as checks of the updated TeX.
+
+## Publication-marker scan
+
+After the evidence files were installed,
+`/tmp/s6-verifier-venv/bin/python checks/scan_placeholders.py --require-zero` reported
+`UNRESOLVED_MARKER_COUNT=0` and exited successfully.

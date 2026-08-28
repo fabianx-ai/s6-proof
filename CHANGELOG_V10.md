@@ -25,9 +25,9 @@ body, or the two unit certificates.
 ## Formal repository changes
 
 - Archives the successful pre-V10 Lean checkout and evidence under `formal/archive/b3c0a190/`.
-- Replaces all 32 concrete uses of the native computation tactic by proposed kernel-reducible `decide` proofs.
+- Replaces all 32 concrete uses of the native computation tactic by explicit kernel-checked arithmetic proofs.
 - Adds `formal/lean-source/S6/AxiomAudit.lean`.
-- Adds current V10 build, axiom, and source-tree reports with explicit `PLACEHOLDER` gates because the pinned
-  Lean environment was not available in this session.
+- Adds verified V10 build, axiom, and source-tree reports. The successful pinned rebuild and 62-name audit are
+  recorded in `formal/BUILD_REPORT_V10.md` and `formal/AXIOM_REPORT_V10.txt`.
 - Separates audit templates from supplied reviews and distinguishes interface fidelity from independent theorem
   verification.

@@ -1,10 +1,23 @@
-V10 current Lean source static scan (not a compilation)
+V10 verified Lean-source static scan (post-repair)
 
-$ rg -n native_decide formal/lean-source
-PASS: no matches
+$ rg -n 'native[_-]decide|trustCompiler' formal/lean-source --glob '*.lean'
+PASS: no matches (rg exit 1)
 
-$ count decide proofs in concrete files
-COUNT=32
+$ rg -n '\bdecide\b' formal/lean-source --glob '*.lean'
+PASS: no matches (rg exit 1)
 
-$ source hygiene (excluding axiom-audit commands and comments)
-PASS: no sorry/admit/unsafe matches
+$ rg -n -w '(sorry|admit)' formal/lean-source --glob '*.lean'
+PASS: no matches (rg exit 1)
+
+$ rg -n '^[[:space:]]*(axiom|axioms|constant|constants)[[:space:]]' formal/lean-source --glob '*.lean'
+PASS: no custom declarations (rg exit 1)
+
+$ rg -n '^[[:space:]]*unsafe[[:space:]]+(def|theorem|opaque|axiom)' formal/lean-source --glob '*.lean'
+PASS: no unsafe declarations (rg exit 1)
+
+$ sha256sum -c ../SOURCE_TREE_V10.sha256  # from formal/lean-source
+PASS: all 15 manifested source/configuration/checker files verified
+
+Repair census: the incoming bundle had 32 bare decide sites (30 in S6Shortcuts.lean and 2 in
+S6/LatticeOrbitIndex.lean). The repaired current source has zero; theorem statements were preserved and the
+sites now use explicit kernel-checked extensionality/finite-case/norm_num proofs.

@@ -22,6 +22,6 @@ for path in sorted(ROOT.rglob('*')):
             rows.append(f'{path.relative_to(ROOT)}:{lineno}:{line}')
 print('\n'.join(rows))
 print(f'UNRESOLVED_MARKER_COUNT={len(rows)}')
-# A pre-publication run should pass --require-zero; V10 intentionally does not yet.
+# A publication run must pass --require-zero.
 if '--require-zero' in sys.argv and rows:
     raise SystemExit(1)

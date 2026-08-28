@@ -6,9 +6,11 @@ This bundle contains Version 10 of the short paper, the companion Lean source, e
 source-interface audit packages, the supplied Claude Fable V9 review that motivated this patch, and the
 immutable identity record for the external 108-page source.
 
-Version 10 is intentionally a **pre-publication candidate**: the paper is built, but the modified Lean tree has
-not been rebuilt under its pinned environment. Every missing formal result is marked `PLACEHOLDER` and can be
-found with `checks/scan_placeholders.py`.
+Version 10's formal gate is closed: the repaired Lean tree was rebuilt and audited under its pinned
+environment at built-source commit `b6220d0fd6b301b2df2082a91885513945126f45`, with aggregate source-tree
+digest `37d55a7a16aa29bf11cc291bdca8a20c98192bb18883b5da171bc25c449a55f1`. The TeX source records this
+evidence. The bundled PDF predates that TeX update and still carries the former formal-release-gate paragraph;
+Fabian must rebuild it before GitHub/Zenodo publication.
 
 ## Version 10 changes
 
@@ -20,17 +22,17 @@ found with `checks/scan_placeholders.py`.
 - Exposes the admissible period parameter `c0` and condition `(beta3)`.
 - Distinguishes canonical projectors from the chosen seed and records the complete seed-integrality lattice.
 - Makes determinant, basis, signature, and freeness conventions explicit.
-- Proposes kernel-reducible replacements for all concrete native computation certificates and adds an axiom
-  audit driver; the fresh build remains a visible publication gate.
+- Uses explicit kernel-checked replacements for all concrete native-computation certificates and includes a
+  62-name axiom-audit driver; the pinned rebuild and trust-boundary audit pass with evidence under `formal/`.
 
 ## Contents
 
 - `paper/s6_short_proof_v10.pdf` - rendered paper.
 - `paper/s6_short_proof_v10.tex` - self-contained LaTeX source.
 - `sources/` - immutable identity metadata for the linked, non-redistributed source manuscript.
-- `formal/lean-source/` - proposed V10 Lean tree.
+- `formal/lean-source/` - repaired and verified V10 Lean tree.
 - `formal/archive/b3c0a190/` - historical pre-V10 source and successful build evidence.
-- `formal/BUILD_REPORT_V10.md`, `AXIOM_REPORT_V10.txt`, `lean-build-v10.log` - current publication gates.
+- `formal/BUILD_REPORT_V10.md`, `AXIOM_REPORT_V10.txt`, `lean-build-v10.log` - completed build and axiom evidence.
 - `formal/SOURCE_TREE_V10.sha256` - current Lean source-tree manifest.
 - `audits/templates/` - blank operational receipts; not evidence.
 - `audits/reviews/` - supplied completed review documents.
@@ -48,24 +50,28 @@ latexmk -pdf -interaction=nonstopmode -halt-on-error s6_short_proof_v10.tex
 ## Exact non-Lean checks
 
 ```sh
-python checks/verify_certificates.py
-python checks/audit_checks.py
-python checks/verify_source_identity.py
-python checks/scan_placeholders.py
+python3 -m venv /tmp/s6-verifier-venv
+/tmp/s6-verifier-venv/bin/python -m pip install -r requirements-verifier.txt
+/tmp/s6-verifier-venv/bin/python checks/verify_certificates.py
+/tmp/s6-verifier-venv/bin/python checks/audit_checks.py
+/tmp/s6-verifier-venv/bin/python checks/verify_source_identity.py
+/tmp/s6-verifier-venv/bin/python checks/scan_placeholders.py
 ```
 
-## Formal publication gate
+The recorded V10 checks used Python 3.12.3 with SymPy 1.12 in that verifier environment. The ambient system
+Python on the verification host did not include SymPy.
 
-Follow `formal/REPRODUCE.md`. The required fresh V10 build and axiom report must replace every formal
-`PLACEHOLDER`. Do not use the historical pre-V10 build log as evidence for the modified source.
+## Formal verification
+
+The pinned clean build and 62-name axiom audit completed successfully; see `formal/BUILD_REPORT_V10.md`,
+`formal/AXIOM_REPORT_V10.txt`, and `formal/lean-build-v10.log`. Historical pre-V10 evidence remains provenance
+only and does not attest the modified source.
 
 ## Final release gate
 
 Before GitHub/Zenodo publication:
 
-1. run the pinned Lean build and axiom audit;
-2. replace all `PLACEHOLDER` values with actual evidence;
-3. run `python checks/scan_placeholders.py --require-zero`;
-4. rebuild the paper and rerun all exact checks;
-5. regenerate `MANIFEST.sha256`;
-6. update and tag the public repository atomically.
+1. Fabian rebuilds the PDF from the updated TeX and reruns the paper/PDF checks;
+2. confirm `/tmp/s6-verifier-venv/bin/python checks/scan_placeholders.py --require-zero` exits successfully;
+3. regenerate `MANIFEST.sha256` after the rebuilt PDF and refreshed checks;
+4. update and tag the public repository atomically.
