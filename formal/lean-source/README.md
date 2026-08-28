@@ -29,11 +29,11 @@ The modified V10 tree is covered by the completed build and per-theorem axiom re
 the exact built-source commit and source-tree digest. The successful historical evidence under
 `../archive/b3c0a190/` applies only to the archived pre-V10 checkout.
 
-## Required publication commands
+## Reproduction commands
 
 ```sh
-lake exe cache get
 lake clean
+lake exe cache get
 lake build
 lake env lean S6/AxiomAudit.lean > ../AXIOM_REPORT_V10.txt 2>&1
 ```
