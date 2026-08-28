@@ -31,3 +31,13 @@ body, or the two unit certificates.
   recorded in `formal/BUILD_REPORT_V10.md` and `formal/AXIOM_REPORT_V10.txt`.
 - Separates audit templates from supplied reviews and distinguishes interface fidelity from independent theorem
   verification.
+
+## PDF release closure
+
+- Rebuilt the updated self-contained TeX with latexmk 4.83 and pdfTeX 1.40.25; the final document has 29 A4
+  pages and the LaTeX log has no unresolved references, undefined citations, overfull boxes, or underfull boxes.
+- Made the formal-release paragraph's long commit hashes and evidence paths line-break cleanly without changing
+  its mathematical or verification claims.
+- Refreshed the PDF preflight and regression receipts. The rebuilt PDF is openable, unencrypted, text-based,
+  form-free, and uses 33 embedded fonts; its extracted text contains the verified formal-release evidence and
+  omits the legacy unresolved-gate language.

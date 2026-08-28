@@ -1,13 +1,20 @@
-V10 PDF regression receipt
+V10 rebuilt PDF regression receipt
+
+PDF: paper/s6_short_proof_v10.pdf
+SHA-256: 1bc0e3900062cb0ea7d4fbf302cd6a1b46dfbe88193026d3c994e84a235e9be2
+Metadata command: env LC_ALL=C TZ=UTC pdfinfo paper/s6_short_proof_v10.pdf
+Font command: env LC_ALL=C TZ=UTC pdffonts paper/s6_short_proof_v10.pdf
+Text extraction: env LC_ALL=C pdftotext -layout -enc UTF-8 -eol unix
+  paper/s6_short_proof_v10.pdf (exit 0)
 
 Title:           Projectors and Unit Defect in the Proposed Complex Six-Sphere Construction, Version 10
-Subject:         
-Keywords:        
+Subject:
+Keywords:
 Author:          Fabian Franz and GPT-5.6 Pro (amanuensis)
 Creator:         LaTeX with hyperref
-Producer:        pdfTeX-1.40.26
-CreationDate:    Fri Aug 28 15:29:32 2026 UTC
-ModDate:         Fri Aug 28 15:29:32 2026 UTC
+Producer:        pdfTeX-1.40.25
+CreationDate:    Fri Aug 28 21:54:13 2026 UTC
+ModDate:         Fri Aug 28 21:54:13 2026 UTC
 Custom Metadata: yes
 Metadata Stream: no
 Tagged:          no
@@ -19,14 +26,14 @@ Pages:           29
 Encrypted:       no
 Page size:       595.276 x 841.89 pts (A4)
 Page rot:        0
-File size:       650457 bytes
+File size:       653477 bytes
 Optimized:       no
-PDF version:     1.7
+PDF version:     1.5
 
 Embedded fonts:
 name                                 type              encoding         emb sub uni object ID
 ------------------------------------ ----------------- ---------------- --- --- --- ---------
-ASQEFS+LMRoman10-Bold                Type 1            Custom           yes yes yes    232  0
+QTPSAY+LMRoman10-Bold                Type 1            Custom           yes yes yes    232  0
 TRALND+LMRoman12-Bold                Type 1            Custom           yes yes yes    233  0
 SCCWWK+LMRoman9-Regular              Type 1            Custom           yes yes yes    234  0
 LJTDCS+LMRomanCaps10-Regular         Type 1            Custom           yes yes yes    235  0
@@ -40,14 +47,14 @@ OLFDBK+LMMathExtension10-Regular     Type 1            Custom           yes yes 
 RGDFMW+LMMathSymbols6-Regular        Type 1            Custom           yes yes yes    243  0
 LWUKHB+LMMathItalic6-Regular         Type 1            Custom           yes yes yes    244  0
 HMAALZ+LMSans9-Regular               Type 1            Custom           yes yes yes    245  0
-ATJDID+LMRoman10-Regular             Type 1            Custom           yes yes yes    247  0
+FJDHZI+LMRoman10-Regular             Type 1            Custom           yes yes yes    247  0
 UJSSLJ+LMRoman9-Italic               Type 1            Custom           yes yes yes    248  0
 AQQBTK+LMRoman8-Regular              Type 1            Custom           yes yes yes    249  0
 SQKTMM+LMMathItalic8-Regular         Type 1            Custom           yes yes yes    316  0
 MOYOWS+LMMathItalic10-Regular        Type 1            Custom           yes yes yes    317  0
 LIMHBO+LMMathSymbols10-Regular       Type 1            Custom           yes yes yes    318  0
 AQQBTK+LMRoman8-Regular              Type 1            Custom           yes yes yes    319  0
-ATJDID+LMRoman10-Regular             Type 1            Custom           yes yes yes    320  0
+FJDHZI+LMRoman10-Regular             Type 1            Custom           yes yes yes    320  0
 WDPLHH+LMSans10-Regular              Type 1            Custom           yes yes yes    335  0
 MHTVCS+LMRoman10-Italic              Type 1            Custom           yes yes yes    336  0
 MUFLYO+LMMathSymbols8-Regular        Type 1            Custom           yes yes yes    337  0
@@ -57,8 +64,13 @@ XBKNYL+LMRoman9-Bold                 Type 1            Custom           yes yes 
 BGQPIQ+LMRoman7-Regular              Type 1            Custom           yes yes yes    396  0
 HSTDHT+LMMathItalic7-Regular         Type 1            Custom           yes yes yes    405  0
 FFKCIT+LMMathSymbols7-Regular        Type 1            Custom           yes yes yes    406  0
-ERQWAJ+LMMono10-Regular              Type 1            Custom           yes yes yes    617  0
-YPGMIU+LMMono9-Regular               Type 1            Custom           yes yes yes    702  0
+NXAHSA+LMMono10-Regular              Type 1            Custom           yes yes yes    617  0
+YPGMIU+LMMono9-Regular               Type 1            Custom           yes yes yes    706  0
+
+FONT_ROWS=33
+FONT_NOT_EMBEDDED_OR_SUBSETTED_OR_UNICODE=0
+
+Text tests used boundary-aware regular expressions for numbered theorem and lemma labels.
 
 PASS absent: theorem 6.1
 PASS absent: theorem 6.11
@@ -70,9 +82,14 @@ PASS absent: single seed
 PASS absent: recovered independently
 PASS absent: A2-triangulation
 PASS absent: A_2-triangulation
+PASS absent: legacy unresolved-gate token
+PASS absent: former no-compilation sentence
 PASS present: Lemma 6.1
 PASS present: Lemma 6.11
 PASS present: Lemma 6.14
 PASS present: Theorem B.1
 PASS present: Proposition 7.14
-PASS present: formal release gate marker
+PASS present: Verified formal release gate
+PASS present: built-source commit b6220d0fd6b301b2df2082a91885513945126f45
+PASS present: source digest 37d55a7a16aa29bf11cc291bdca8a20c98192bb18883b5da171bc25c449a55f1
+PASS present: 62-name audit completion sentence

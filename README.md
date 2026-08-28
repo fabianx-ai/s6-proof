@@ -9,8 +9,9 @@ immutable identity record for the external 108-page source.
 Version 10's formal gate is closed: the repaired Lean tree was rebuilt and audited under its pinned
 environment at built-source commit `b6220d0fd6b301b2df2082a91885513945126f45`, with aggregate source-tree
 digest `37d55a7a16aa29bf11cc291bdca8a20c98192bb18883b5da171bc25c449a55f1`. The TeX source records this
-evidence. The bundled PDF predates that TeX update and still carries the former formal-release-gate paragraph;
-Fabian must rebuild it before GitHub/Zenodo publication.
+evidence. The bundled PDF was rebuilt from that updated TeX with latexmk 4.83 and pdfTeX 1.40.25. It has 29
+A4 pages, carries the verified formal-release paragraph, and passes the refreshed preflight and text/font
+regression checks under `checks/`.
 
 ## Version 10 changes
 
@@ -69,9 +70,8 @@ only and does not attest the modified source.
 
 ## Final release gate
 
-Before GitHub/Zenodo publication:
+The local build, evidence, PDF, marker, and integrity gates are closed. Before GitHub/Zenodo publication,
+Fabian's remaining outward steps are:
 
-1. Fabian rebuilds the PDF from the updated TeX and reruns the paper/PDF checks;
-2. confirm `/tmp/s6-verifier-venv/bin/python checks/scan_placeholders.py --require-zero` exits successfully;
-3. regenerate `MANIFEST.sha256` after the rebuilt PDF and refreshed checks;
-4. update and tag the public repository atomically.
+1. verify the publication checkout with `sha256sum -c MANIFEST.sha256`;
+2. update and tag the public repository atomically.

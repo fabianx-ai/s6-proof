@@ -1,12 +1,19 @@
 # Version 10 verification report
 
-## Bundled PDF receipt
+## Rebuilt PDF receipt
 
-- The incoming bundle records LaTeX engine pdfTeX 1.40.26 through latexmk 4.86.
-- Result: successful build, 29 A4 pages.
+- The updated V10 TeX was rebuilt with pdfTeX 1.40.25 (TeX Live 2023/Debian) through latexmk 4.83; the
+  documented `latexmk -pdf -interaction=nonstopmode -halt-on-error` command exited successfully.
+- Result: 29 A4 pages; SHA-256
+  `1bc0e3900062cb0ea7d4fbf302cd6a1b46dfbe88193026d3c994e84a235e9be2`.
 - LaTeX diagnostics: no unresolved references, undefined citations, overfull boxes, or underfull boxes.
+- pdfTeX emitted two benign font-expansion ordering warnings; all fonts remain embedded and the rendered pages
+  show no corresponding defect.
 - PDF preflight: openable, unencrypted, text-based, no forms, all fonts embedded.
-- Visual verification: all 29 pages rendered; the full contact sheet and changed pages were inspected with no clipping, collisions, or malformed figures.
+- Text regression: the repaired lemma labels and formal-release evidence are present; obsolete theorem labels,
+  the former no-compilation sentence, and the legacy unresolved-gate token are absent.
+- Visual verification: all 29 pages were rendered in two contact sheets; pages 2 and 23--29 were additionally
+  inspected at enlarged or full-page resolution, with no clipping, collisions, or malformed figures.
 
 ## Mathematical finite checks
 
@@ -70,9 +77,10 @@ the pinned hash above.
 
 ## TeX/PDF release status
 
-**TeX gate closed; PDF rebuild pending on Fabian's side; the shipped PDF still carries the former gate
-paragraph.** No LaTeX toolchain was available on the verification host, so the PDF was intentionally left
-untouched. The frozen PDF receipts under `checks/` were likewise not represented as checks of the updated TeX.
+The PDF was rebuilt from the updated TeX after the LaTeX and PDF-inspection tools were installed. The build
+completed successfully, the formal-release paragraph is present, and the refreshed receipts in
+`checks/pdf-preflight.txt` and `checks/pdf-regression.txt` describe this exact PDF. The TeX source was adjusted
+only to make long hashes and evidence paths line-break cleanly; the final log has no overfull or underfull boxes.
 
 ## Publication-marker scan
 

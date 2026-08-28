@@ -1487,11 +1487,15 @@ Source, audit evidence, and reproduction instructions are maintained at \url{htt
 \end{itemize}
 
 \textbf{Verified formal release gate.}
-At Git commit \texttt{b6220d0fd6b301b2df2082a91885513945126f45}, the pinned clean build completed successfully with exit code zero (\texttt{Build completed successfully (8517 jobs).}) under Lean~4.31.0-rc1, Lean commit \texttt{fd009949156901e6cf15b6d9bf1122294b8e697a}, and Mathlib commit \texttt{0531bb79fea20efc9ce6942db46b96be5a919400}. The aggregate SHA-256 digest of \texttt{formal/SOURCE\_TREE\_V10.sha256} was
+The verified formal release used Git commit
+\[
+\texttt{b6220d0fd6b301b2df2082a91885513945126f45}.
+\]
+At that commit, the pinned clean build exited successfully and reported 8,517 jobs under Lean~4.31.0-rc1, Lean commit \path{fd009949156901e6cf15b6d9bf1122294b8e697a}, and Mathlib commit \path{0531bb79fea20efc9ce6942db46b96be5a919400}. The aggregate SHA-256 digest of \path{formal/SOURCE_TREE_V10.sha256} was
 \[
 \texttt{37d55a7a16aa29bf11cc291bdca8a20c98192bb18883b5da171bc25c449a55f1}.
 \]
-The 62-name per-theorem audit completed successfully; the union of reported axioms was \texttt{\{propext, Classical.choice, Quot.sound\}}, with no generated computation/compiler-trust axiom. Complete output is preserved in \texttt{formal/lean-build-v10.log}, \texttt{formal/AXIOM\_REPORT\_V10.txt}, and \texttt{formal/BUILD\_REPORT\_V10.md}.
+The 62-name per-theorem audit completed successfully; the union of reported axioms was \texttt{\{propext, Classical.choice, Quot.sound\}}, with no generated computation/compiler-trust axiom. Complete output is preserved in \path{formal/lean-build-v10.log}, \path{formal/AXIOM_REPORT_V10.txt}, and \path{formal/BUILD_REPORT_V10.md}.
 
 The semantic boundaries are unchanged. First, \texttt{UnitTransgression} assumes the repaired filtration data; it does not derive the Leray page from nearby cycles. Second, the current gluing file proves that the literal presented group is abelian and separately classifies the integral relation cokernel, but it does not yet contain an equivalence identifying those two formal objects. The elementary group proof in \cref{thm:gluing-group} is therefore still the paper-level bridge.
 

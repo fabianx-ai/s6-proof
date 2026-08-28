@@ -1,6 +1,28 @@
-PDF: /mnt/data/s6-short-proof-v10-release/paper/s6_short_proof_v10.pdf
+V10 rebuilt PDF preflight receipt
+
+Build command: latexmk -pdf -interaction=nonstopmode -halt-on-error s6_short_proof_v10.tex
+Build directory: paper/
+Build exit code: 0
+latexmk: 4.83
+pdfTeX: 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian)
+Final log diagnostics: zero LaTeX/package warnings, unresolved references, undefined citations,
+  multiply-defined labels, overfull boxes, or underfull boxes. The log contains two benign pdfTeX
+  font-expansion warnings (`font should be expanded before its first use`).
+
+PDF: paper/s6_short_proof_v10.pdf
+SHA-256: 1bc0e3900062cb0ea7d4fbf302cd6a1b46dfbe88193026d3c994e84a235e9be2
 Pages: 29
+Page size: A4
 Encrypted: False
-Openable (PyMuPDF): True
+Openable (PyMuPDF 1.23.7): True
+Text characters, minimum per page / total: 1791 / 81008
 Likely scanned: False
+Raster images: 0
+Form PDF: False
+AcroForm catalog entry: null
 XFA present: False
+Embedded/subsetted/Unicode fonts: 33 / 33
+
+Visual verification: all 29 pages were rendered and inspected in two contact sheets. Pages 2 and
+23--29, which differ textually from the incoming PDF, were additionally inspected at enlarged or
+full-page resolution. No clipping, collision, malformed figure, or unintended blank page was found.
