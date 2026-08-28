@@ -52,22 +52,34 @@ def N : M4Q :=
      0, 0,  0, 0]
 
 theorem T1_order_three : T1 ^ 3 = 1 := by
-  decide
+  ext i j
+  fin_cases i <;> fin_cases j <;>
+    norm_num [T1, Matrix.mul_apply, Matrix.one_apply, pow_succ, Fin.sum_univ_succ]
 
 theorem T2_order_four : T2 ^ 4 = 1 := by
-  decide
+  ext i j
+  fin_cases i <;> fin_cases j <;>
+    norm_num [T2, Matrix.mul_apply, Matrix.one_apply, pow_succ, Fin.sum_univ_succ]
 
 theorem T0_is_I_add_N : T0 = 1 + N := by
-  decide
+  ext i j
+  fin_cases i <;> fin_cases j <;>
+    norm_num [T0, N, Matrix.one_apply]
 
 theorem T0_is_product_inverse_left : T0 * (T1 * T2) = 1 := by
-  decide
+  ext i j
+  fin_cases i <;> fin_cases j <;>
+    norm_num [T0, T1, T2, Matrix.mul_apply, Matrix.one_apply, Fin.sum_univ_succ]
 
 theorem T0_is_product_inverse_right : (T1 * T2) * T0 = 1 := by
-  decide
+  ext i j
+  fin_cases i <;> fin_cases j <;>
+    norm_num [T0, T1, T2, Matrix.mul_apply, Matrix.one_apply, Fin.sum_univ_succ]
 
 theorem N_square_zero : N * N = 0 := by
-  decide
+  ext i j
+  fin_cases i <;> fin_cases j <;>
+    norm_num [N, Matrix.mul_apply, Fin.sum_univ_succ]
 
 /-! ## Dual monodromy -/
 
@@ -84,10 +96,14 @@ def A2 : M4Q :=
       3, 0,  1, 1]
 
 theorem A1_order_three : A1 ^ 3 = 1 := by
-  decide
+  ext i j
+  fin_cases i <;> fin_cases j <;>
+    norm_num [A1, Matrix.mul_apply, Matrix.one_apply, pow_succ, Fin.sum_univ_succ]
 
 theorem A2_order_four : A2 ^ 4 = 1 := by
-  decide
+  ext i j
+  fin_cases i <;> fin_cases j <;>
+    norm_num [A2, Matrix.mul_apply, Matrix.one_apply, pow_succ, Fin.sum_univ_succ]
 
 /-! ## Conserved alternating form -/
 
@@ -98,18 +114,26 @@ def Q0 : M4Q :=
      -1,  0, 0, 0]
 
 theorem T1_preserves_Q0 : Matrix.transpose T1 * Q0 * T1 = Q0 := by
-  decide
+  ext i j
+  fin_cases i <;> fin_cases j <;>
+    norm_num [T1, Q0, Matrix.mul_apply, Fin.sum_univ_succ]
 
 theorem T2_preserves_Q0 : Matrix.transpose T2 * Q0 * T2 = Q0 := by
-  decide
+  ext i j
+  fin_cases i <;> fin_cases j <;>
+    norm_num [T2, Q0, Matrix.mul_apply, Fin.sum_univ_succ]
 
 theorem N_infinitesimally_preserves_Q0 :
     Matrix.transpose N * Q0 + Q0 * N = 0 := by
-  decide
+  ext i j
+  fin_cases i <;> fin_cases j <;>
+    norm_num [N, Q0, Matrix.mul_apply, Fin.sum_univ_succ]
 
 theorem N_quadratic_Q0_term_vanishes :
     Matrix.transpose N * Q0 * N = 0 := by
-  decide
+  ext i j
+  fin_cases i <;> fin_cases j <;>
+    norm_num [N, Q0, Matrix.mul_apply, Fin.sum_univ_succ]
 
 /-! ## Cyclic averaging projectors -/
 
@@ -127,23 +151,37 @@ def P4 : M4Q :=
 
 theorem P3_is_cyclic_average :
     P3 = ((1 : ℚ) / 3) • (1 + A1 + A1 ^ 2) := by
-  decide
+  ext i j
+  fin_cases i <;> fin_cases j <;>
+    norm_num [P3, A1, Matrix.mul_apply, Matrix.one_apply, pow_succ,
+      Fin.sum_univ_succ]
 
 theorem P4_is_cyclic_average :
     P4 = ((1 : ℚ) / 4) • (1 + A2 + A2 ^ 2 + A2 ^ 3) := by
-  decide
+  ext i j
+  fin_cases i <;> fin_cases j <;>
+    norm_num [P4, A2, Matrix.mul_apply, Matrix.one_apply, pow_succ,
+      Fin.sum_univ_succ]
 
 theorem P3_idempotent : P3 * P3 = P3 := by
-  decide
+  ext i j
+  fin_cases i <;> fin_cases j <;>
+    norm_num [P3, Matrix.mul_apply, Fin.sum_univ_succ]
 
 theorem P4_idempotent : P4 * P4 = P4 := by
-  decide
+  ext i j
+  fin_cases i <;> fin_cases j <;>
+    norm_num [P4, Matrix.mul_apply, Fin.sum_univ_succ]
 
 theorem A1_fixes_P3 : A1 * P3 = P3 := by
-  decide
+  ext i j
+  fin_cases i <;> fin_cases j <;>
+    norm_num [A1, P3, Matrix.mul_apply, Fin.sum_univ_succ]
 
 theorem A2_fixes_P4 : A2 * P4 = P4 := by
-  decide
+  ext i j
+  fin_cases i <;> fin_cases j <;>
+    norm_num [A2, P4, Matrix.mul_apply, Fin.sum_univ_succ]
 
 /-! ## Common seed and projected twists -/
 
@@ -156,28 +194,36 @@ def v2 : V4Q := -epsilonPrime
 def gammaValue (v : V4Q) : ℚ := v 0
 
 theorem P3_projects_seed : Matrix.mulVec P3 eGamma = epsilon := by
-  decide
+  funext i
+  fin_cases i <;>
+    norm_num [P3, eGamma, epsilon, Matrix.mulVec, dotProduct, Fin.sum_univ_succ]
 
 theorem P4_projects_seed : Matrix.mulVec P4 eGamma = epsilonPrime := by
-  decide
+  funext i
+  fin_cases i <;>
+    norm_num [P4, eGamma, epsilonPrime, Matrix.mulVec, dotProduct, Fin.sum_univ_succ]
 
 theorem epsilon_fixed : Matrix.mulVec A1 epsilon = epsilon := by
-  decide
+  funext i
+  fin_cases i <;>
+    norm_num [A1, epsilon, Matrix.mulVec, dotProduct, Fin.sum_univ_succ]
 
 theorem epsilonPrime_fixed : Matrix.mulVec A2 epsilonPrime = epsilonPrime := by
-  decide
+  funext i
+  fin_cases i <;>
+    norm_num [A2, epsilonPrime, Matrix.mulVec, dotProduct, Fin.sum_univ_succ]
 
 theorem gamma_epsilon : gammaValue epsilon = 1 := by
-  decide
+  norm_num [gammaValue, epsilon]
 
 theorem gamma_epsilonPrime : gammaValue epsilonPrime = 1 := by
-  decide
+  norm_num [gammaValue, epsilonPrime]
 
 theorem gamma_v1 : gammaValue v1 = 1 := by
-  decide
+  norm_num [gammaValue, v1, epsilon]
 
 theorem gamma_v2 : gammaValue v2 = -1 := by
-  decide
+  norm_num [gammaValue, v2, epsilonPrime]
 
 /-! ## Local and global unimodular certificates -/
 
@@ -190,10 +236,14 @@ def B0Inv : M2Z :=
      1,  0]
 
 theorem B0_mul_inverse : B0 * B0Inv = 1 := by
-  decide
+  ext i j
+  fin_cases i <;> fin_cases j <;>
+    norm_num [B0, B0Inv, Matrix.mul_apply, Matrix.one_apply, Fin.sum_univ_succ]
 
 theorem B0_inverse_mul : B0Inv * B0 = 1 := by
-  decide
+  ext i j
+  fin_cases i <;> fin_cases j <;>
+    norm_num [B0, B0Inv, Matrix.mul_apply, Matrix.one_apply, Fin.sum_univ_succ]
 
 def relationMatrix : M2Z :=
   !![3, -1;
@@ -204,10 +254,16 @@ def relationMatrixInv : M2Z :=
      -4, 3]
 
 theorem relation_mul_inverse : relationMatrix * relationMatrixInv = 1 := by
-  decide
+  ext i j
+  fin_cases i <;> fin_cases j <;>
+    norm_num [relationMatrix, relationMatrixInv, Matrix.mul_apply, Matrix.one_apply,
+      Fin.sum_univ_succ]
 
 theorem relation_inverse_mul : relationMatrixInv * relationMatrix = 1 := by
-  decide
+  ext i j
+  fin_cases i <;> fin_cases j <;>
+    norm_num [relationMatrix, relationMatrixInv, Matrix.mul_apply, Matrix.one_apply,
+      Fin.sum_univ_succ]
 
 /-! ## Generic defect arithmetic -/
 

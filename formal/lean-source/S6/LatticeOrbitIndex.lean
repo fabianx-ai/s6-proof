@@ -50,11 +50,11 @@ open S6Shortcuts
 
 /-- The certified local matrix is unimodular. -/
 theorem B0_det_natAbs : B0.det.natAbs = 1 := by
-  decide
+  norm_num [B0, Matrix.det_fin_two]
 
 /-- The local orbit quotient for `B0` has exactly one element. -/
 theorem natCard_B0_latticeOrbits : Nat.card (LatticeOrbits B0) = 1 := by
-  rw [natCard_latticeOrbits_eq_natAbs_det B0 (by decide)]
+  rw [natCard_latticeOrbits_eq_natAbs_det B0 (by norm_num [B0, Matrix.det_fin_two])]
   exact B0_det_natAbs
 
 /-- Equivalently, every integral lattice point lies in the same `B0` translation orbit. -/
