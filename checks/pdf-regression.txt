@@ -1,0 +1,78 @@
+V10 PDF regression receipt
+
+Title:           Projectors and Unit Defect in the Proposed Complex Six-Sphere Construction, Version 10
+Subject:         
+Keywords:        
+Author:          Fabian Franz and GPT-5.6 Pro (amanuensis)
+Creator:         LaTeX with hyperref
+Producer:        pdfTeX-1.40.26
+CreationDate:    Fri Aug 28 15:29:32 2026 UTC
+ModDate:         Fri Aug 28 15:29:32 2026 UTC
+Custom Metadata: yes
+Metadata Stream: no
+Tagged:          no
+UserProperties:  no
+Suspects:        no
+Form:            none
+JavaScript:      no
+Pages:           29
+Encrypted:       no
+Page size:       595.276 x 841.89 pts (A4)
+Page rot:        0
+File size:       650457 bytes
+Optimized:       no
+PDF version:     1.7
+
+Embedded fonts:
+name                                 type              encoding         emb sub uni object ID
+------------------------------------ ----------------- ---------------- --- --- --- ---------
+ASQEFS+LMRoman10-Bold                Type 1            Custom           yes yes yes    232  0
+TRALND+LMRoman12-Bold                Type 1            Custom           yes yes yes    233  0
+SCCWWK+LMRoman9-Regular              Type 1            Custom           yes yes yes    234  0
+LJTDCS+LMRomanCaps10-Regular         Type 1            Custom           yes yes yes    235  0
+VGRDRJ+LMMathItalic9-Regular         Type 1            Custom           yes yes yes    236  0
+SCCWWK+LMRoman9-Regular              Type 1            Custom           yes yes yes    237  0
+FUNVEJ+LMMathSymbols9-Regular        Type 1            Custom           yes yes yes    238  0
+UXUFVE+MSBM10                        Type 1            Builtin          yes yes yes    239  0
+WVXLPL+EUFM10                        Type 1            Builtin          yes yes yes    240  0
+SYCJFM+LMRoman6-Regular              Type 1            Custom           yes yes yes    241  0
+OLFDBK+LMMathExtension10-Regular     Type 1            Custom           yes yes yes    242  0
+RGDFMW+LMMathSymbols6-Regular        Type 1            Custom           yes yes yes    243  0
+LWUKHB+LMMathItalic6-Regular         Type 1            Custom           yes yes yes    244  0
+HMAALZ+LMSans9-Regular               Type 1            Custom           yes yes yes    245  0
+ATJDID+LMRoman10-Regular             Type 1            Custom           yes yes yes    247  0
+UJSSLJ+LMRoman9-Italic               Type 1            Custom           yes yes yes    248  0
+AQQBTK+LMRoman8-Regular              Type 1            Custom           yes yes yes    249  0
+SQKTMM+LMMathItalic8-Regular         Type 1            Custom           yes yes yes    316  0
+MOYOWS+LMMathItalic10-Regular        Type 1            Custom           yes yes yes    317  0
+LIMHBO+LMMathSymbols10-Regular       Type 1            Custom           yes yes yes    318  0
+AQQBTK+LMRoman8-Regular              Type 1            Custom           yes yes yes    319  0
+ATJDID+LMRoman10-Regular             Type 1            Custom           yes yes yes    320  0
+WDPLHH+LMSans10-Regular              Type 1            Custom           yes yes yes    335  0
+MHTVCS+LMRoman10-Italic              Type 1            Custom           yes yes yes    336  0
+MUFLYO+LMMathSymbols8-Regular        Type 1            Custom           yes yes yes    337  0
+HMWIFF+LMRoman10-BoldItalic          Type 1            Custom           yes yes yes    339  0
+TMHVPV+MSAM10                        Type 1            Builtin          yes yes yes    361  0
+XBKNYL+LMRoman9-Bold                 Type 1            Custom           yes yes yes    395  0
+BGQPIQ+LMRoman7-Regular              Type 1            Custom           yes yes yes    396  0
+HSTDHT+LMMathItalic7-Regular         Type 1            Custom           yes yes yes    405  0
+FFKCIT+LMMathSymbols7-Regular        Type 1            Custom           yes yes yes    406  0
+ERQWAJ+LMMono10-Regular              Type 1            Custom           yes yes yes    617  0
+YPGMIU+LMMono9-Regular               Type 1            Custom           yes yes yes    702  0
+
+PASS absent: theorem 6.1
+PASS absent: theorem 6.11
+PASS absent: theorem 6.12
+PASS absent: theorem 6.13
+PASS absent: theorem 6.14
+PASS absent: one and the same primitive
+PASS absent: single seed
+PASS absent: recovered independently
+PASS absent: A2-triangulation
+PASS absent: A_2-triangulation
+PASS present: Lemma 6.1
+PASS present: Lemma 6.11
+PASS present: Lemma 6.14
+PASS present: Theorem B.1
+PASS present: Proposition 7.14
+PASS present: formal release gate marker

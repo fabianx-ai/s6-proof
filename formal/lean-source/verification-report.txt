@@ -1,0 +1,23 @@
+[ok] T1 has order 3
+[ok] T2 has order 4
+[ok] T0 = (T1*T2)^-1
+[ok] N^2 = 0
+[ok] A1 has order 3
+[ok] A2 has order 4
+[ok] T1 preserves Q0
+[ok] T2 preserves Q0
+[ok] N is infinitesimally Q0-skew
+[ok] quadratic Q0 term vanishes
+[ok] P3 is idempotent
+[ok] P4 is idempotent
+[ok] P3 projects the common seed
+[ok] P4 projects the common seed
+[ok] epsilon is A1-fixed
+[ok] epsilon' is A2-fixed
+[ok] B0 is unimodular
+[ok] global relation matrix is unimodular
+[ok] actual defect p = -1
+[ok] central fibre Euler arithmetic
+[ok] projected-seed defect is m-n
+
+All exact finite certificates passed.

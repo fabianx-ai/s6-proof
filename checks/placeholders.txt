@@ -1,0 +1,30 @@
+CHANGELOG_V10.md:30:- Adds current V10 build, axiom, and source-tree reports with explicit `PLACEHOLDER` gates because the pinned
+README.md:10:not been rebuilt under its pinned environment. Every missing formal result is marked `PLACEHOLDER` and can be
+README.md:60:`PLACEHOLDER`. Do not use the historical pre-V10 build log as evidence for the modified source.
+README.md:67:2. replace all `PLACEHOLDER` values with actual evidence;
+V10_VERIFICATION_REPORT.md:32:**PLACEHOLDER:** the modified V10 Lean source was not compiled in this environment. The current bundle contains
+formal/AXIOM_REPORT_V10.txt:1:PLACEHOLDER - run the pinned command below and replace this entire file with the complete output:
+formal/BUILD_REPORT_V10.md:5:**PLACEHOLDER - publication gate not yet executed.**
+formal/BUILD_REPORT_V10.md:10:compile, and replace every `PLACEHOLDER` field before publication.
+formal/BUILD_REPORT_V10.md:14:- Git commit: `PLACEHOLDER_GIT_COMMIT`
+formal/BUILD_REPORT_V10.md:15:- Working tree status: `PLACEHOLDER_CLEAN_OR_DIRTY`
+formal/BUILD_REPORT_V10.md:17:- Lean commit reported by toolchain: `PLACEHOLDER_LEAN_COMMIT`
+formal/BUILD_REPORT_V10.md:34:- `lake build` exit code: `PLACEHOLDER_BUILD_EXIT_CODE`
+formal/BUILD_REPORT_V10.md:35:- Build summary: `PLACEHOLDER_BUILD_SUMMARY`
+formal/BUILD_REPORT_V10.md:37:- Per-theorem axiom report: `PLACEHOLDER_AXIOM_RESULT`
+formal/BUILD_REPORT_V10.md:38:- Generated compiler-trust axiom absent: `PLACEHOLDER_TRUST_RESULT`
+formal/BUILD_REPORT_V10.md:43:`PLACEHOLDER_RELEASE_DECISION`
+formal/LEAN_SCOPE.md:17:**PLACEHOLDER:** the modified V10 tree has not yet been compiled under the pinned toolchain. The historical
+formal/LEAN_SCOPE.md:21:made until all `PLACEHOLDER` markers in the formal reports are replaced with actual build and axiom evidence.
+formal/REPRODUCE.md:23:**PLACEHOLDER:** these V10 commands have not been run in the present environment. Historical pre-V10 evidence
+formal/lean-build-v10.log:1:PLACEHOLDER - fresh V10 Lean build has not been run in this environment.
+formal/lean-build-v10.log:4:Git commit: PLACEHOLDER_GIT_COMMIT
+formal/lean-build-v10.log:5:Working tree: PLACEHOLDER_CLEAN_OR_DIRTY
+formal/lean-build-v10.log:7:Lean commit: PLACEHOLDER_LEAN_COMMIT
+formal/lean-build-v10.log:12:PLACEHOLDER_RAW_BUILD_OUTPUT
+formal/lean-source/README.md:26:**PLACEHOLDER:** the modified V10 tree has not yet been compiled under the pinned toolchain. The
+formal/lean-source/README.md:39:`../lean-build-v10.log`, repair any failing proof, and replace every remaining `PLACEHOLDER` before
+formal/lean-source/S6/AxiomAudit.lean:15:run on purpose; the report remains a visible `PLACEHOLDER` release gate.
+paper/s6_short_proof_v10.tex:1489:\textbf{PLACEHOLDER (formal release gate).} Before publication, run the pinned clean build and the per-theorem axiom audit described in \texttt{formal/BUILD\_REPORT\_V10.md}; replace this paragraph with the verified commit, toolchain, source-tree hash, build result, and axiom report. Until that gate is closed, V10 makes no claim that the refactored Lean tree compiles.
+paper/s6_short_proof_v10.tex:1518:The first layer is encoded. Its V10 trust-boundary rebuild remains the \textbf{PLACEHOLDER} gate above. The next load-bearing Lean theorem is an explicit equivalence between the presented gluing group and its classified relation cokernel.
+UNRESOLVED_MARKER_COUNT=29

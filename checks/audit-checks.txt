@@ -1,0 +1,33 @@
+L2 combinatorial core: PASS
+  maximal cones: unimodular
+  B0 determinant / vertex orbits: 1 / 1
+  quotient cells (vertices, edges, triangles): (1, 3, 2)
+  normalization fan: dP6 hexagon with three opposite-side pairs
+  triple-point preimage classes: 2 alternating triples
+  local central-fibre monomials: z0, z0*z1, z0*z1*z2
+  Euler characteristic: 2
+L3 finite arithmetic: PASS
+  cyclic averages / integral fixed twists: epsilon, epsilonPrime
+  primitive signed twists: v1=epsilon, v2=-epsilonPrime
+  gamma values: (+1, -1)
+  nonidentity affine-power residues: order 3 -> (1,2), order 4 -> (3,2,1)
+  moving elliptic orders / cyclic deck groups: 3 / Z3, 4 / Z4
+L3 source-comparison arithmetic: PASS
+  coinvariants: Z^2 in both cases
+  H1 torsion: zero in both cases
+  BdF types: b2=(Z/3)^2, c2=Z/4 x Z/2
+L1 symbolic consistency: PASS
+  affine laws respect g1^3=g2^4=1
+  period equivariance defects: zero
+  lattice determinant: det(Im Z)=-Im(tau)*D
+  D is generator-invariant and shifts uniformly by Im(c0)
+L1 numerical sanity: PASS
+  4096 random upper-half-plane tuples preserve D under both generators
+  one uniform imaginary shift makes the sampled D values negative
+  4096 bounded-cusp samples satisfy the asymptotic negativity estimate
+L4 independent finite arithmetic: PASS
+  primitive global invariant exterior generators: gamma, q, gamma*u*w, volume
+  degree-one specialization intersection: 12*gamma
+  degree-two finite-point image indices: 1, 2
+  first local discrepancies / defect: (0,-4,+3) / -1
+  multiplicativity equations force one common coefficient and sign

@@ -1,0 +1,16 @@
+{
+  "schema_version": "1.0",
+  "title_in_paper": "A compact complex threefold fibred by tori over the projective line, and the six-sphere",
+  "canonical_url": "https://alpo.ge/s6.pdf",
+  "consulted_utc_date": "2026-08-28",
+  "sha256": "283bba102dd1d5dc346af81b28145bdaaea6654398d5032e76e97bafb9a858f2",
+  "pages": 108,
+  "redistributed": false,
+  "identity_record": {
+    "repository": "https://github.com/ipitchford/s6-extension-results-candidate",
+    "release": "v0.1.0-candidate",
+    "payload_commit": "94a76f1cc7fafbffe0f54135584dda8eed7bbaa2",
+    "path": "SOURCE_RECORDS.json"
+  },
+  "consulted_for_paper_version": 10
+}

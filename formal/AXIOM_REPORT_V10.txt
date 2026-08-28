@@ -1,0 +1,8 @@
+PLACEHOLDER - run the pinned command below and replace this entire file with the complete output:
+
+cd formal/lean-source
+lake env lean S6/AxiomAudit.lean
+
+Publication acceptance condition: no exported concrete certificate depends on a generated native-computation
+axiom or on `Lean.trustCompiler`. Standard foundational axioms inherited from Lean/Mathlib must be reported,
+not silently removed.

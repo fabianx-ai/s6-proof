@@ -1,0 +1,12 @@
+PLACEHOLDER - fresh V10 Lean build has not been run in this environment.
+
+Required preamble to insert before the raw command output:
+Git commit: PLACEHOLDER_GIT_COMMIT
+Working tree: PLACEHOLDER_CLEAN_OR_DIRTY
+Lean toolchain: leanprover/lean4:v4.31.0-rc1
+Lean commit: PLACEHOLDER_LEAN_COMMIT
+Mathlib commit: 0531bb79fea20efc9ce6942db46b96be5a919400
+Source-tree digest: 3506b93e1a077ff6888a61285aa6d8745ed79d1de4625a9e1e0cf012650c56b1
+Command: lake clean && lake build
+
+PLACEHOLDER_RAW_BUILD_OUTPUT

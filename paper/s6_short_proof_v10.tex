@@ -1,0 +1,1808 @@
+\documentclass[11pt,reqno]{amsart}
+
+\usepackage[a4paper,margin=28mm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb,amsfonts,mathtools}
+\usepackage{booktabs,array,tabularx,longtable}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,calc,fit,shapes.geometric}
+\usepackage{float}
+\usepackage{aliascnt}
+\usepackage{hyperref}
+\usepackage[nameinlink,noabbrev]{cleveref}
+\usepackage{url}
+\usepackage{listings}
+
+\definecolor{DeepBlue}{RGB}{28,63,120}
+\definecolor{SoftBlue}{RGB}{236,242,251}
+\definecolor{SoftGold}{RGB}{251,246,228}
+\definecolor{SoftGreen}{RGB}{237,248,240}
+\definecolor{SoftRed}{RGB}{252,239,239}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=DeepBlue,
+  citecolor=DeepBlue,
+  urlcolor=DeepBlue,
+  pdfauthor={Fabian Franz and GPT-5.6 Pro (amanuensis)},
+  pdftitle={Projectors and Unit Defect in the Proposed Complex Six-Sphere Construction, Version 10}
+}
+
+\setlist[itemize]{leftmargin=2em,itemsep=0.25em,topsep=0.35em}
+\setlist[enumerate]{leftmargin=2.2em,itemsep=0.3em,topsep=0.35em}
+\allowdisplaybreaks
+\numberwithin{equation}{section}
+
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\R}{\mathbb R}
+\newcommand{\C}{\mathbb C}
+\newcommand{\Pone}{\mathbb P^1}
+\newcommand{\Id}{\mathrm{Id}}
+\newcommand{\im}{\operatorname{im}}
+\newcommand{\rk}{\operatorname{rk}}
+\newcommand{\coker}{\operatorname{coker}}
+\newcommand{\SNF}{\operatorname{SNF}}
+\newcommand{\dP}{\mathrm{dP}_6}
+\newcommand{\NS}{\operatorname{NS}}
+\newcommand{\Pic}{\operatorname{Pic}}
+\newcommand{\Aut}{\operatorname{Aut}}
+\newcommand{\vol}{\operatorname{vol}}
+\newcommand{\Tor}{\operatorname{Tor}}
+\newcommand{\Def}{\operatorname{Def}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\epsp}{\varepsilon'}
+\newcommand{\wideg}{\widehat\gamma}
+\newcommand{\wideu}{\widehat u}
+\newcommand{\widew}{\widehat w}
+\newcommand{\wided}{\widehat\delta}
+\newcommand{\LambdaTor}{\Lambda_{\mathrm{tor}}}
+\newcommand{\LCP}{\mathsf{LCP}}
+\newcommand{\chic}{\chi_c}
+\newcommand{\Aroot}{\mathsf{A}_2}
+
+\newtheorem{theorem}{Theorem}[section]
+
+\newaliascnt{proposition}{theorem}
+\newtheorem{proposition}[proposition]{Proposition}
+\aliascntresetthe{proposition}
+
+\newaliascnt{lemma}{theorem}
+\newtheorem{lemma}[lemma]{Lemma}
+\aliascntresetthe{lemma}
+
+\newaliascnt{corollary}{theorem}
+\newtheorem{corollary}[corollary]{Corollary}
+\aliascntresetthe{corollary}
+
+\newaliascnt{construction}{theorem}
+\newtheorem{construction}[construction]{Construction package}
+\aliascntresetthe{construction}
+
+\theoremstyle{definition}
+
+\newaliascnt{principle}{theorem}
+\newtheorem{principle}[principle]{Principle}
+\aliascntresetthe{principle}
+
+\newaliascnt{definition}{theorem}
+\newtheorem{definition}[definition]{Definition}
+\aliascntresetthe{definition}
+
+\newaliascnt{remark}{theorem}
+\newtheorem{remark}[remark]{Remark}
+\aliascntresetthe{remark}
+
+\newaliascnt{question}{theorem}
+\newtheorem{question}[question]{Question}
+\aliascntresetthe{question}
+
+\crefname{theorem}{theorem}{theorems}
+\Crefname{theorem}{Theorem}{Theorems}
+\crefname{proposition}{proposition}{propositions}
+\Crefname{proposition}{Proposition}{Propositions}
+\crefname{lemma}{lemma}{lemmas}
+\Crefname{lemma}{Lemma}{Lemmas}
+\crefname{corollary}{corollary}{corollaries}
+\Crefname{corollary}{Corollary}{Corollaries}
+\crefname{construction}{construction package}{construction packages}
+\Crefname{construction}{Construction package}{Construction packages}
+\crefname{principle}{principle}{principles}
+\Crefname{principle}{Principle}{Principles}
+\crefname{definition}{definition}{definitions}
+\Crefname{definition}{Definition}{Definitions}
+\crefname{remark}{remark}{remarks}
+\Crefname{remark}{Remark}{Remarks}
+\crefname{question}{question}{questions}
+\Crefname{question}{Question}{Questions}
+
+\newenvironment{statusnote}{%
+  \begin{center}\begin{minipage}{0.94\textwidth}\small\hrule\vspace{0.7em}%
+}{%
+  \vspace{0.7em}\hrule\end{minipage}\end{center}%
+}
+
+\newenvironment{proofbox}{%
+  \begin{center}\begin{minipage}{0.94\textwidth}\setlength{\parindent}{0pt}\small%
+}{%
+  \end{minipage}\end{center}%
+}
+
+\title[Projectors and unit defect for the proposed complex $S^6$]{Projectors and Unit Defect in the Proposed Complex Six-Sphere Construction\\[4pt]
+\large A short proof, a historical account, and reusable formal interfaces}
+
+\author{Fabian Franz}
+\author{GPT-5.6 Pro (amanuensis)}
+\thanks{This note was produced in a human--AI collaboration. Fabian Franz supplied the structural reading, selected the proof architecture, and directed the mathematical compression. GPT-5.6 Pro served as amanuensis---a writer working under direction---and drafted the text, developed the shortcut lemmas, checked the finite calculations, and prepared the manuscript and formalization scaffold. The model cannot assume scholarly responsibility. Publication and mathematical responsibility remain with Fabian Franz.}
+\date{28 August 2026 \;---\; version 10}
+
+\subjclass[2020]{32J17, 14D06, 14M25, 55T10, 57R55}
+\keywords{six-sphere, complex structure, torus fibration, triangle group, logarithmic transform, toric degeneration, Reynolds projector, Leray spectral sequence, formal verification}
+
+\begin{document}
+\raggedbottom
+
+\begin{abstract}
+A 108-page manuscript proposes a compact complex threefold $X$ diffeomorphic to the standard six-sphere. The construction begins with the triangle action $\Delta(3,4,\infty)\curvearrowright\mathfrak H$: equivariant periods descend to a holomorphic family of complex two-tori over the smooth locus of $\Pone(3,4,\infty)$, completed at its two elliptic points and cusp by two logarithmic transforms and one toric filling. Its implementation is explicit but difficult to hold in view as one argument. We give a short structural proof of its global recognition theorem. The period family, the three analytic fillings, their proper global gluing, the boundary maps, and the integral specialization calculation are imported from named results of the source manuscript; the finite algebra and the final recognition are reorganized into a small sequence of reusable steps.
+
+The main simplification is that the two finite-monodromy directions are not found by separate fixed-lattice searches. They are the normalized cyclic averages of the chosen primitive lattice vector:
+\[
+ P_3(A_1)\wideg=\eps,
+ \qquad
+ P_4(A_2)\wideg=\epsp,
+ \qquad
+ P_m(A)=\frac1m\sum_{k=0}^{m-1}A^k
+ \quad(A^m=I).
+\]
+The global gluing then chooses the signed pair $v_1=\eps$, $v_2=-\epsp$. The cusp is controlled by a square-zero exchange operator and a unimodular map $B_0$; the global topology is controlled by a second unimodular certificate,
+\[
+ p=12\ell_0-4\ell_1-3\ell_2=-1.
+\]
+Together with the $\Aroot$ quotient combinatorics, the first unit gives one toric component and Euler number $2$. The second unit kills the fundamental group and all middle integral cohomology.
+
+The argument is presented twice. Section~4 gives the concise mathematical proof and identifies precisely why the published Campana--Demailly--Peternell reduction does not exclude the non-normal cusp fibre. Section~5 gives the same recognition and the same CDP mechanism in a historical and human-readable register. Section~6 exports the generic averaging, exchange, gluing, transgression, component-count, and conductor lemmas. A companion Lean project begins the formal proof at the algebraic layer: it contains reusable interfaces and the concrete finite certificates, but not the analytic construction.
+\end{abstract}
+
+\maketitle
+\tableofcontents
+
+\begin{statusnote}
+\textbf{Verification status.}
+The source manuscript~\cite{S6} is not yet independently certified, and its conclusion conflicts with the published conclusion of Campana--Demailly--Peternell~\cite{CDP20}. This note therefore does not pretend to replace the source's 108-page implementation or an expert review of it. It treats the source's named construction and topology theorems as mathematical imports, gives a new short route through their recognition layer, and proves the reusable finite lemmas on which that route rests. The exact CDP conflict is separated from the existence proof: the printed torsion-free reduction fails at the proposed non-normal fibre, so it supplies no disproof of the construction. The companion Lean development checks part of the algebraic interface only; its precise scope is recorded in \cref{sec:formalization}.
+\end{statusnote}
+
+\section{The problem revisited}\label{sec:problem}
+
+\subsection{From an integrability problem to a recognition problem}
+
+Hopf's question asks whether the smooth six-sphere admits an integrable complex structure~\cite{Hopf}. The familiar octonionic almost-complex structure does not solve this problem: it is not integrable. A direct attack would therefore begin with a tensor $J$ on the already known sphere and attempt to prove that its Nijenhuis tensor vanishes.
+
+The proposed construction reverses the direction. It first builds a compact complex threefold $X$ by holomorphic gluing and only afterwards asks which smooth six-manifold underlies it:
+\[
+\text{holomorphic local models}
+\longrightarrow
+\text{compact complex threefold }X
+\longrightarrow
+\text{smooth recognition}.
+\]
+Integrability is automatic in the first arrow because all charts and transition maps are holomorphic. The difficult global question becomes topological: prove that $X$ is the standard $S^6$.
+
+This reversal is the first conceptual economy of the proof. It changes the main unknown from a nonlinear differential equation on $S^6$ to a gluing and recognition problem for a complex fibration.
+
+\subsection{What now exists}
+
+A concrete proof proposal now exists~\cite{S6}; a separate AI-assisted distillation gives a useful audit map of its architecture~\cite{Feng}. It constructs a fibration
+\[
+ f:X\longrightarrow \Pone
+\]
+whose generic fibres are complex two-tori. There are exactly three exceptional fibres, corresponding to the three special points of the triangle orbifold $\Pone(3,4,\infty)$:
+\begin{itemize}
+\item a multiple bielliptic fibre $3S_1$ at the order-three point;
+\item a multiple bielliptic fibre $4S_2$ at the order-four point;
+\item a reduced non-normal toric fibre $W$ at the cusp.
+\end{itemize}
+The normalization of $W$ is the degree-six del Pezzo surface, with opposite sides of its anticanonical hexagon identified. Its two triple points carry the entire Euler characteristic:
+\[
+ e(X)=e(W)=2.
+\]
+The source then computes $\pi_1(X)$ and the integral homology, and recognizes $X$ as the standard six-sphere.
+
+The challenge has consequently changed. It is no longer only to invent a possible geometry; it is to expose the load-bearing claims, shorten the finite calculations, and formalize enough of the argument that errors cannot hide in conventions.
+
+\subsection{The precise theorem proved in this note}
+
+The first two pages of the source manuscript already give a compressed dependency checklist: the open period family, the three special fillings, the global gluing, the boundary presentation, the integral homology calculation, and smooth sphere recognition. We use that checklist as an interface to the detailed proof. The items below are not new conjectures; each is imported from the indicated source result.
+
+\begin{construction}[Imported construction package $\LCP$]\label{pkg:lcp}
+Let $V\cong\Z^4$ have basis $(\gamma,u,w,\delta)$, let $\Lambda=V^*$ have dual basis $(\wideg,\wideu,\widew,\wided)$, and let $T_1,T_2$ be the matrices in \cref{sec:lattice}. Put $A_j=(T_j^{-1})^t$ and $T_0=(T_1T_2)^{-1}=I+N$.
+
+The package $\LCP$ consists of the following source theorems.
+\begin{enumerate}[label=\textup{(L\arabic*)}]
+\item \textbf{Open period family} \cite[Thm.~3.4]{S6}. There are holomorphic functions $\tau,\mu,\beta$ on the upper half-plane satisfying the prescribed triangle-group transformation laws such that
+\[
+ \Pi(z)=
+ \begin{pmatrix}
+ 6\mu(z)&\tau(z)&1&0\\
+ \beta(z)&\mu(z)&0&1
+ \end{pmatrix}.
+\]
+The function $\beta$ is determined up to an additive constant,
+\[
+\beta=\beta_{\mathrm{part}}+c_0.
+\]
+For a source constant $M$, every $c_0$ with $\operatorname{Im}c_0<-M$ satisfies the global lattice condition
+\begin{equation}\tag{$\beta3$}\label{eq:beta3}
+\operatorname{Im}\beta(z)
+-\frac{6(\operatorname{Im}\mu(z))^2}{\operatorname{Im}\tau(z)}<0
+\qquad(z\in\mathfrak H),
+\end{equation}
+so the columns of $\Pi(z)$ form a real rank-four lattice for every $z$. They define a proper holomorphic family $J\to B^\circ$ of complex two-tori over $B^\circ=\Pone\setminus\{p_0,p_1,p_2\}$, with monodromies $A_1,A_2,M_0$. All later source results are uniform for every admissible $c_0$; we write $X_{c_0}$ when the parameter matters. Whether distinct admissible values yield biholomorphic threefolds is left open in \cite[Rem.~6.4]{S6}.
+
+\item \textbf{Cusp normal form and toric filling} \cite[Prop.~3.21, Thm.~4.5, Props.~4.6--4.7]{S6}. Near $p_0$ the period matrix has the form
+\[
+ [\,sB_0+C(t_c)\mid I\,],
+\]
+where $C$ extends holomorphically to $t_c=0$ and
+\[
+ B_0:\Lambda/\LambdaTor\xrightarrow{\sim}\LambdaTor,
+ \qquad
+ \LambdaTor=\langle\widew,\wided\rangle.
+\]
+Here $\LambdaTor$ is a free rank-two lattice of torus/toric vanishing directions; the subscript ``tor'' does not denote torsion. The map $B_0$ is unimodular:
+\[
+ B_0(\overline{\wideg})=-\wided,
+ \qquad
+ B_0(\overline{\wideu})=\widew.
+\]
+The corrected $\Z^2$-action on the $\Aroot$ toric model is free and properly discontinuous; its quotient is proper over a disc, agrees with $J$ over the punctured disc, and has reduced irreducible central fibre $W$ with normalization $\dP$, three double curves, and two triple points.
+
+\item \textbf{Finite-monodromy fillings and chosen twists} \cite[Def.~5.3, Thm.~5.4]{S6}. The construction fixes the signed invariant primitive vectors
+\[
+ v_1=\wideg+2\wideu-4\widew,
+ \qquad
+ v_2=-(\wideg+3\wideu-3\widew),
+\]
+with $\ell_j=\gamma(v_j)$. The general freeness conditions are
+\[
+3\nmid\ell_1,
+\qquad
+\ell_2\ \text{odd},
+\]
+and the chosen values $(\ell_1,\ell_2)=(1,-1)$ satisfy them. The order-three and order-four logarithmic transforms are therefore free. They produce smooth local threefolds with multiple fibres $3S_1$ and $4S_2$, and agree with $J$ over the punctured discs.
+
+\item \textbf{Separated global assembly} \cite[Thm.~6.2, Prop.~6.3]{S6}. The open family and the three fillings glue through the prescribed identifications to a Hausdorff compact connected complex threefold
+\[
+ X=J\cup N_0\cup N_1\cup N_2,
+\]
+and the induced map $f:X\to\Pone$ is proper and holomorphic with connected fibres. Definition~6.6 and Proposition~6.7 parameterize cusp regluings by a translation section $\sigma$, with connecting class
+\[
+ c(\sigma)\in\Lambda/\LambdaTor,
+ \qquad
+ \ell_0=\gamma(c(\sigma)).
+\]
+For the tautological identification used in the construction, \cite[\S7.5]{S6} proves geometrically that the toric meridian has translation part $\mu=0$: by \cite[Prop.~4.7(iv), Lem.~6.5(i)]{S6}, the holomorphic zero section agrees with the toric constant section through $(1,1)$. Consequently
+\[
+\ell_0=\gamma(\mu)=0.
+\]
+Equivalently, the notation of Proposition~6.7 writes the original assembly as $X=X(0)$. Section~7.5 identifies this same integer with the exponent in the boundary relation $xy=c^{\ell_0}$.
+
+\item \textbf{Fundamental-group boundary package} \cite[Lem.~2.7(iii)--(iv), Lem.~7.4, Lem.~7.16, Thm.~7.17]{S6}. The smallest $\langle A_1,A_2\rangle$-invariant subgroup of $\Lambda$ containing the cusp vanishing lattice $\LambdaTor$ is $\ker\gamma$. Hence
+\[
+\Lambda/\ker\gamma\cong\Z
+\]
+via $\gamma$, so precisely one fibre class $c$ survives. Since $\gamma\circ A_j=\gamma$, the residual monodromy on this quotient is trivial and $c$ is central. With the source's base paths and orientation conventions, the three filling maps give the presentation in \cref{eq:presentation}.
+
+\item \textbf{Integral specialization and Leray} \cite[Thm.~B.1, Prop.~7.14, Props.~7.26--7.27]{S6}. Theorem~B.1 identifies the specialization at the non-normal cusp with the monodromy-invariant lattice, while Proposition~7.14 computes the finite-index specialization lattices at the order-three and order-four fibres. Propositions~7.26--7.27 assemble these local inputs into the low-degree $E_2$-page stated in \cref{sec:cohomology}; the only relevant transgressions are the three rank-one maps in \cref{eq:three-d2}, all multiplication by the same signed gluing integer $p$ in compatible integral generators.
+\end{enumerate}
+\end{construction}
+
+The source proves substantially more than this package, including the algebraic dimension and the detailed comparison with \cite{CDP20}. The present note calls only the interfaces needed by the short recognition proof.
+
+\begin{theorem}[Short recognition theorem]\label{thm:main}
+Every compact complex threefold supplied by $\LCP$ with the tautological cusp gluing and the signed projected twists $v_1,v_2$ is diffeomorphic to the standard six-sphere.
+\end{theorem}
+
+\begin{proof}
+The proof occupies \cref{sec:proof}. Its finite spine is the following chain. The cusp exchange is square-zero and $B_0$ is unimodular. The two finite invariant directions are cyclic averages of the chosen seed $\wideg$; the global gluing chooses their relative sign, giving surviving values $1$ and $-1$. The cusp shift is zero, so
+\[
+ p=12\cdot0-4\cdot1-3(-1)=-1.
+\]
+The imported boundary presentation then trivializes $\pi_1(X)$. The imported integral Leray transgressions are multiplication by the same unit $p$, so every middle cohomology group vanishes. The $\Aroot$ quotient combinatorics give Euler characteristic $2$. Thus $X$ is a simply connected integral homology six-sphere, hence a homotopy six-sphere; high-dimensional Poincar\'e recognition and $\Theta_6=0$ identify it diffeomorphically with the standard $S^6$.
+\end{proof}
+
+\begin{corollary}[Conditional resolution of the Hopf problem]\label{cor:conditional}
+If the construction and topology theorems imported in $\LCP$ are correct, then the standard smooth six-sphere admits an integrable complex structure.
+\end{corollary}
+
+\section{Structure and declared dependencies}\label{sec:dependencies}
+
+A short proof is useful only if it does not conceal its dependencies. This section records the mathematical ``software stack''.
+
+\subsection{Dependency table}
+
+\begin{center}
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{0.96}
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash\bfseries}p{0.21\textwidth}X>{\raggedright\arraybackslash}p{0.21\textwidth}@{}}
+\toprule
+Package & What it supplies & Interface used here\\
+\midrule
+Triangle orbifolds & The base $\Pone(3,4,\infty)$ and generators of orders $3,4$ with parabolic product & Standard background\\
+Integer linear algebra & Monodromy matrices, invariant forms, projectors, coinvariants, determinants, Smith normal form & Reproved; Lean helpers\\
+Periods and complex tori & The functions $\tau,\mu,\beta$ and the open family $J\to B^\circ$ & \cite[Thm.~3.4]{S6}\\
+Toric geometry & Cusp normal form, proper quotient, self-glued $\dP$ fibre & \cite[Prop.~3.21, Thm.~4.5, Props.~4.6--4.7]{S6}\\
+Logarithmic transforms & Multiple fibres $3S_1,4S_2$ and signed twists & \cite[Def.~5.3, Thm.~5.4, Lem.~7.16]{S6}\\
+Global analytic gluing & Compact Hausdorff assembly; separately, the cusp regluing class and tautological shift & Assembly: \cite[Thm.~6.2, Prop.~6.3]{S6}; cusp class: \cite[Def.~6.6, Prop.~6.7, \S7.5]{S6}\\
+Van Kampen and Smith theory & Geometric boundary presentation and unit collapse & \cite[Thm.~7.17]{S6}; algebra reproved\\
+Nearby cycles and integral Leray & Specialization lattices and normalized transgressions & \cite[Props.~7.26--7.27]{S6}; unit lemma\\
+High-dimensional topology & Homology sphere $\Rightarrow$ standard smooth $S^6$ & Standard theorems\\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+The logically separate CDP comparison in \cref{sec:cdp-formal} is not part of $\LCP$: it imports the printed torsion-free reduction \cite[p.~692]{CDP20} and the source's conductor analysis \cite[Lem.~10.3, Thm.~10.5, \S10.4]{S6} at the point of use. None of these statements enters the proof of \cref{thm:main}.
+
+\subsection{Architecture}
+
+The short proof has three layers: the imported complex world, the finite projector and exchange shortcuts, and the global recognition.
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+  >=Latex,
+  node distance=10mm and 13mm,
+  box/.style={draw,rounded corners,align=center,inner sep=5pt,font=\small},
+  local/.style={box,fill=SoftBlue},
+  finite/.style={box,fill=SoftGold},
+  global/.style={box,fill=SoftGreen}
+]
+\node[local] (orb) {$\Pone(3,4,\infty)$\\rank-four monodromy};
+\node[local,right=of orb] (period) {period functions\\open torus family $J$};
+\node[finite,below left=of period] (cusp) {square-zero cusp\\$|\det B_0|=1$};
+\node[finite,below right=of period] (proj) {cyclic projectors\\$v_1=P_3\wideg$, $v_2=-P_4\wideg$};
+\node[local,below=22mm of period] (fill) {three local fillings\\compact complex $X$};
+\node[global,below left=of fill] (euler) {$W$: one component\\$e(W)=2$};
+\node[global,below=of fill] (defect) {$p=12\ell_0-4\ell_1-3\ell_2=-1$};
+\node[global,below right=of fill] (leray) {van Kampen + Leray\\no middle topology};
+\node[global,below=18mm of defect] (sphere) {$X\cong_{\mathrm{diff}}S^6$};
+\draw[->] (orb)--(period);
+\draw[->] (period)--(cusp);
+\draw[->] (period)--(proj);
+\draw[->] (cusp)--(fill);
+\draw[->] (proj)--(fill);
+\draw[->] (fill)--(euler);
+\draw[->] (fill)--(defect);
+\draw[->] (fill)--(leray);
+\draw[->] (euler)--(sphere);
+\draw[->] (defect)--(sphere);
+\draw[->] (leray)--(sphere);
+\end{tikzpicture}
+\caption{The compressed architecture. Blue nodes are the local analytic construction package; gold nodes are the new finite shortcuts; green nodes are the global recognition.}
+\label{fig:architecture}
+\end{figure}
+
+\subsection{What is and is not shortened}
+
+The shortcuts do not make properness, freeness, holomorphic extension, or integral specialization disappear. Those are genuine geometric statements. They do remove three kinds of avoidable complexity:
+\begin{enumerate}
+\item the invariant directions at the finite points are produced canonically by averaging rather than guessed and solved for, while their relative sign remains explicit global gluing data;
+\item the cusp matrices are recognized as a universal square-zero rank-two exchange rather than repeatedly expanded;
+\item after the source boundary maps are imported, the global topology is organized by two integers, $d=|\det B_0|$ and $p=12\ell_0-4\ell_1-3\ell_2$, instead of by a long list of attaching calculations.
+\end{enumerate}
+
+\section{Focus: the proof in one page}\label{sec:focus}
+
+\begin{proofbox}
+\textbf{Step 1: Create the open complex world.}
+Use the triangle group $\Delta(3,4,\infty)$ and the period matrix $\Pi(z)$ to build a holomorphic family of complex two-tori over the thrice-punctured sphere.
+
+\medskip
+\textbf{Step 2: Identify the obstruction.}
+The monodromy preserves an alternating form, but the associated symmetric form at the cusp has signature $(1,1)$. Hence the family is not polarizable, so the usual positive compactification theorems do not apply. An explicit cusp world is required.
+
+\medskip
+\textbf{Step 3: Linearize the cusp.}
+The cusp monodromy is $I+N$ with $N^2=0$. Thus the exchange flow is exactly $I+sN$, with no higher terms. On the dual lattice it transfers one rank-two quotient isomorphically onto one rank-two toric lattice. The transfer matrix $B_0$ has determinant $1$.
+
+\medskip
+\textbf{Step 4: Project to the finite fixed lattices.}
+For a finite-order monodromy $A$, the uniform orbit average
+\[
+P_m=\frac1m(I+A+\cdots+A^{m-1})
+\]
+is the projector onto the fixed subspace. Applied to the chosen primitive seed $\wideg$, it gives the two integral invariant directions required by the logarithmic transforms. The global gluing independently chooses their relative sign.
+
+\medskip
+\textbf{Step 5: Close the three punctures.}
+Use the $\Aroot$ toric quotient at the cusp and the order-three and order-four logarithmic transforms at the finite points. The source's separated-gluing theorem produces a compact Hausdorff complex threefold $X$.
+
+\medskip
+\textbf{Step 6: Read the singular sample.}
+The quotient triangulation has one vertex orbit, three edge orbits, and two triangle orbits. Thus the central fibre has one component, three double curves, and two triple points, and
+\[
+\chi(W)=\chic((\C^*)^2)+3\chic(\C^*)+2=2.
+\]
+
+\medskip
+\textbf{Step 7: Solve the arithmetic.}
+The invariant functional $\gamma$ survives orbit averaging; the chosen global sign gives $\ell_2=-1$, and the tautological cusp section has winding class zero. Therefore
+\[
+(\ell_0,\ell_1,\ell_2)=(0,1,-1),
+\qquad p=12\ell_0-4\ell_1-3\ell_2=-1.
+\]
+The source boundary maps give the van Kampen presentation; its relations collapse in three lines, and $\pi_1(X)=1$.
+
+\medskip
+\textbf{Step 8: Use the same unit in cohomology.}
+The three integral Leray transgressions are multiplication by $p$, and the source computation gives the complete low-degree support needed by the unit-transgression lemma. Since $p=-1$, all middle integral cohomology vanishes.
+
+\medskip
+\textbf{Step 9: Recognize the result.}
+The compact smooth six-manifold $X$ is simply connected and has the homology of $S^6$. It is a homotopy sphere, and $\Theta_6=0$ implies that it is diffeomorphic to the standard sphere.
+\end{proofbox}
+
+The rest of the paper justifies each compression and explains why the same small set of certificates appears in several mathematical languages.
+
+\section{Presentation of the short proof}\label{sec:proof}
+
+\subsection{The rank-four lattice and the non-polarizable obstruction}\label{sec:lattice}
+
+In the basis $(\gamma,u,w,\delta)$ of $V\cong\Z^4$, take
+\begin{equation}\label{eq:T1T2}
+T_1=
+\begin{pmatrix}
+1&0&-6&2\\
+0&-1&1&1\\
+0&-1&0&1\\
+0&0&0&1
+\end{pmatrix},
+\qquad
+T_2=
+\begin{pmatrix}
+1&6&0&-3\\
+0&0&-1&1\\
+0&1&0&0\\
+0&0&0&1
+\end{pmatrix}.
+\end{equation}
+Direct multiplication gives
+\[
+ T_1^3=I,
+ \qquad
+ T_2^4=I,
+\]
+and
+\begin{equation}\label{eq:N}
+T_0=(T_1T_2)^{-1}=I+N,
+\qquad
+N=
+\begin{pmatrix}
+0&0&0&1\\
+0&0&-1&0\\
+0&0&0&0\\
+0&0&0&0
+\end{pmatrix},
+\qquad N^2=0.
+\end{equation}
+Thus $N\delta=\gamma$, $Nw=-u$, and $N\gamma=Nu=0$.
+
+The primitive invariant alternating form is represented by
+\begin{equation}\label{eq:Q0}
+Q_0=
+\begin{pmatrix}
+0&0&0&1\\
+0&0&6&0\\
+0&-6&0&0\\
+-1&0&0&0
+\end{pmatrix}.
+\end{equation}
+One checks
+\[
+T_j^tQ_0T_j=Q_0
+\quad(j=1,2),
+\qquad
+N^tQ_0+Q_0N=0.
+\]
+There is no hidden positive alternative. Write a general alternating form as
+\[
+Q(a,b,c,d,e,f)=
+\begin{pmatrix}
+0&a&b&c\\
+-a&0&d&e\\
+-b&-d&0&f\\
+-c&-e&-f&0
+\end{pmatrix}.
+\]
+Solving $T_1^tQT_1=Q$ and $T_2^tQT_2=Q$ gives
+\[
+(a,b,c,d,e,f)=(0,0,t,6t,0,0).
+\]
+Hence the integral invariant alternating forms are exactly $\Z Q_0$. Every nonzero candidate therefore induces the same indefinite cusp form up to scale.
+
+By \cref{lem:square-zero-exchange}, the exact exchange flow
+\[
+E_s=I+sN
+\]
+preserves $Q_0$ for every scalar $s$.
+
+On $V/\ker N$, the symmetric form
+\[
+ b_N(x,y)=Q_0(x,Ny)
+\]
+has Gram matrix $\operatorname{diag}(6,-1)$ in the ordered quotient basis $(\overline w,\overline\delta)$. It has signature $(1,1)$, reproducing \cite[Lem.~2.8, Rems.~2.9 and~3.23]{S6}. For a polarized weight-one degeneration with unipotent monodromy $e^N$, the polarization--monodromy pairing
+\[
+(x,y)\longmapsto Q(x,Ny)
+\]
+induced on $V/\ker N$ must be definite, up to the overall sign convention; this is the positivity criterion underlying polarized toroidal degeneration theory~\cite{Clemens,Mumford}. Since every invariant alternating form is a multiple of $Q_0$, no monodromy-compatible polarization exists. This is the hard analytic obstruction: the construction conserves an alternating pairing, but not a positive polarization. Standard polarized degeneration theory cannot be invoked as a black box. The explicit toric filling in $\LCP$ is therefore essential rather than decorative.
+
+\subsection{The cusp is a complete rank-two exchange}
+
+Pass to the dual lattice $\Lambda=V^*$. The finite monodromies are
+\begin{equation}\label{eq:A1A2}
+A_1=(T_1^{-1})^t=
+\begin{pmatrix}
+1&0&0&0\\
+6&0&1&0\\
+-6&-1&-1&0\\
+-2&1&0&1
+\end{pmatrix},
+\qquad
+A_2=(T_2^{-1})^t=
+\begin{pmatrix}
+1&0&0&0\\
+0&0&-1&0\\
+-6&1&0&0\\
+3&0&1&1
+\end{pmatrix}.
+\end{equation}
+At the cusp, $M_0=(T_0^{-1})^t=I-N^t$. Put
+\[
+D=M_0-I=-N^t.
+\]
+Then
+\[
+D^2=0,
+\qquad
+\ker D=\im D=\LambdaTor=\langle\widew,\wided\rangle.
+\]
+The induced map
+\[
+B_0:\Lambda/\LambdaTor\longrightarrow\LambdaTor
+\]
+sends
+\[
+\overline{\wideg}\longmapsto-\wided,
+\qquad
+\overline{\wideu}\longmapsto\widew.
+\]
+In the ordered domain basis $(\overline{\wideg},\overline{\wideu})$ and ordered codomain basis $(\widew,\wided)$,
+\begin{equation}\label{eq:B0}
+[B_0]=
+\begin{pmatrix}
+0&1\\
+-1&0
+\end{pmatrix},
+\qquad
+\det B_0=1.
+\end{equation}
+The basis-independent certificate is $|\det B_0|=1$; reversing the orientation of one ordered basis reverses the displayed sign. Equivalently, $D$ has Smith normal form $\operatorname{diag}(1,1,0,0)$. After an integral change of basis the cusp module is simply two copies of the dual-number module $\Z[\nu]/(\nu^2)$.
+
+This observation shortens the cusp algebra. There is no hidden higher-order nilpotent structure: two independent directions transfer once, integrally and completely, into two vanishing directions.
+
+\subsection{The invariant twist directions are cyclic averages}\label{sec:projectors}
+
+For a finite-order operator $A$ of order $m$, define its cyclic averaging operator
+\[
+P_m(A)=\frac1m\sum_{k=0}^{m-1}A^k.
+\]
+By \cref{lem:cyclic-projector}, this is an idempotent projector onto the fixed subspace over $\Q$.
+
+For the two matrices in \cref{eq:A1A2}, direct calculation gives
+\begin{equation}\label{eq:P3P4}
+P_3=
+\begin{pmatrix}
+1&0&0&0\\
+2&0&0&0\\
+-4&0&0&0\\
+0&\frac23&\frac13&1
+\end{pmatrix},
+\qquad
+P_4=
+\begin{pmatrix}
+1&0&0&0\\
+3&0&0&0\\
+-3&0&0&0\\
+0&\frac12&\frac12&1
+\end{pmatrix}.
+\end{equation}
+They are rational projectors, but their values on the chosen primitive seed $\wideg$ are integral:
+\begin{equation}\label{eq:projected-twists}
+P_3\wideg=\wideg+2\wideu-4\widew=:\eps,
+\qquad
+P_4\wideg=\wideg+3\wideu-3\widew=:\epsp.
+\end{equation}
+Moreover,
+\[
+A_1\eps=\eps,
+\qquad
+A_2\epsp=\epsp.
+\]
+The projectors select the two natural invariant directions. The global construction then chooses the signed twists
+\begin{equation}\label{eq:v1v2}
+v_1=P_3\wideg=\eps,
+\qquad
+v_2=-P_4\wideg=-\epsp.
+\end{equation}
+The sign transport into the boundary presentation is fixed by \cite[Lem.~7.16]{S6}: for the source's clockwise meridians, these same vectors enter the two filling relations with one common auxiliary sign $+1$. Reversing the meridian orientation reverses all three integers $\ell_i$ simultaneously and changes only $p$ to $-p$. The minus sign in $v_2$ is not produced by averaging: $+\epsp$ is also locally admissible. It is the relative gluing choice that selects the sphere topology; the positive choice gives the comparison value $p=-7$ and residual group $\Z/7$ \cite[Thm.~7.17]{S6}.
+
+The surviving coinvariant functional is evaluation against $\gamma\in V$:
+\[
+\gamma:\Lambda\longrightarrow\Z,
+\qquad
+\gamma(a\wideg+b\wideu+c\widew+d\wided)=a.
+\]
+It is invariant under both monodromies. Hence \cref{lem:observable} gives
+\begin{equation}\label{eq:ell-values}
+\ell_1:=\gamma(v_1)=1,
+\qquad
+\ell_2:=\gamma(v_2)=-1.
+\end{equation}
+At the cusp, the toric meridian differs from the base meridian by a translation class $\mu\in\Lambda/\LambdaTor$, and
+\begin{equation}\label{eq:ell0-definition}
+\ell_0:=\gamma(\mu).
+\end{equation}
+For the tautological gluing, \cite[\S7.5]{S6} proves $\mu=0$ from the agreement of the holomorphic zero section with the toric constant section; hence $\ell_0=0$. Definition~6.6 and Proposition~6.7 encode a general cusp regluing by a section $\sigma$ with connecting class $c(\sigma)$, and write the original assembly as $X=X(0)$. The same integer is the exponent in $xy=c^{\ell_0}$.
+
+This is the main new algebraic shortcut. One convenient seed and two canonical projectors generate the displayed invariant directions and their primitive observable values; the global gluing supplies the one additional bit of data, their relative sign.
+
+\subsection{Closing the three punctures}
+
+The open family $J\to B^\circ$ is completed according to monodromy type.
+
+At the cusp, the $\Aroot$-triangulation of $\R^2$ defines an infinite smooth toric threefold. The regular term $C(t_c)$ in the cusp period normal form corrects the lattice action, and $B_0$ identifies the acting lattice with the translation lattice. Since $B_0$ is unimodular, \cref{lem:component-index} implies that there is one vertex orbit and hence one irreducible component downstairs.
+
+At the two finite points, the order-three and order-four deck rotations are coupled with $A_1,A_2$ and translations by $v_1/3,v_2/4$. The local freeness congruences hold because $\gamma(v_1)=1$ is nonzero modulo $3$ and $\gamma(v_2)=-1$ is odd. The quotients are smooth and their central divisors are multiple fibres with smooth bielliptic reductions.
+
+Agreement over punctured discs supplies the transition maps, but compactness and Hausdorffness are a separate global statement. The source proves that the local actions are proper, that the quotient relation is separated, and that the four pieces glue to a compact connected complex threefold
+\[
+X=J\cup N_0\cup N_1\cup N_2
+\]
+with a proper holomorphic map $f:X\to\Pone$ \cite[Thm.~4.5, Thm.~5.4, Thm.~6.2]{S6}.
+
+This is where the analytic construction is called. From this point onwards the recognition proof is global and short.
+
+\subsection{The toric fibre carries exactly two units of Euler characteristic}
+
+Modulo the lattice, the $\Aroot$-triangulation has
+\[
+1\text{ vertex orbit},
+\qquad
+3\text{ edge orbits},
+\qquad
+2\text{ triangle orbits}.
+\]
+The corresponding constructible strata of the compact central fibre are
+\[
+W=(\C^*)^2\sqcup 3\C^*\sqcup 2\{\mathrm{point}\}.
+\]
+Compactly supported Euler characteristic is additive on this decomposition, and $\chi=\chic$ on compact $W$. Hence
+\begin{equation}\label{eq:eW}
+\chi(W)=\chic((\C^*)^2)+3\chic(\C^*)+2=0+0+2=2.
+\end{equation}
+Every smooth torus fibre has Euler characteristic zero. The reduced supports of the two multiple fibres are bielliptic surfaces and also have Euler characteristic zero. By \cref{lem:euler-localization},
+\begin{equation}\label{eq:eX}
+\chi(X)=\chi(W)=2.
+\end{equation}
+
+Unimodularity is visible here as component control, not as the whole Euler calculation. The invariant equality $|\det B_0|=1$ gives one vertex orbit; the specific $\Aroot$ quotient then gives three edge orbits and two triangle orbits. Together these facts select one component and Euler characteristic $2$. In this translation model an index $d$ would replicate the complete quotient incidence pattern $d$ times and produce $2d$.
+
+\subsection{The fundamental group collapses in three lines}\label{sec:pi1}
+
+For the fundamental group, the relevant lattice statement is \cite[Lem.~2.7(iv)]{S6}: the smallest $\langle A_1,A_2\rangle$-invariant subgroup containing $\LambdaTor$ is $\ker\gamma$. Thus the surviving fibre quotient is
+\[
+\Lambda/\ker\gamma\cong\Z,
+\]
+generated by a class $c$ detected by $\gamma$. Because $\gamma\circ A_j=\gamma$ for both finite monodromies \cite[Lem.~2.7(iii)]{S6}, the residual action is trivial and $c$ is central. The additive Smith-form identity $(A_1-I)\Lambda+(A_2-I)\Lambda=\ker\gamma$ remains a useful finite cross-check, but the invariant-closure statement is the bridge used by van Kampen.
+
+It then computes the boundary maps of the three fillings, with fixed base paths and orientation conventions \cite[Lem.~7.4, Lem.~7.16, Thm.~7.17]{S6}. If $x,y$ are meridians of the order-three and order-four fibres, van Kampen gives
+\begin{equation}\label{eq:presentation}
+\pi_1(X)=
+\left\langle c,x,y\ \middle|\
+ c\text{ central},\quad
+ xy=c^{\ell_0},\quad
+ x^3=c^{\ell_1},\quad
+ y^4=c^{\ell_2}
+\right\rangle.
+\end{equation}
+For the projected twists, $(\ell_0,\ell_1,\ell_2)=(0,1,-1)$. Therefore
+\[
+xy=1,
+\qquad x^3=c,
+\qquad y^4=c^{-1}.
+\]
+The first relation gives $y=x^{-1}$. The third then gives $x^{-4}=c^{-1}$, or $x^4=c$. Comparing with $x^3=c$ yields $x=1$. Consequently $c=y=1$.
+
+Thus
+\begin{equation}\label{eq:pi1trivial}
+\pi_1(X)=1.
+\end{equation}
+
+For comparison, the generic computation of \cref{thm:gluing-group} gives
+\[
+\pi_1(X)\cong\Z/|p|,
+\qquad
+p=12\ell_0-4\ell_1-3\ell_2.
+\]
+The actual value is
+\begin{equation}\label{eq:pminusone}
+p=12\cdot0-4\cdot1-3(-1)=-1.
+\end{equation}
+The three-line proof above is the specialization of the Smith-normal-form calculation to a unimodular relation matrix.
+
+\subsection{The same unit kills the middle cohomology}\label{sec:cohomology}
+
+Consider the integral Leray spectral sequence
+\[
+E_2^{a,b}=H^a(\Pone,R^bf_*\Z)\Longrightarrow H^{a+b}(X;\Z).
+\]
+Write $G=\langle T_1,T_2\rangle$, and for a $G$-module $M$ write $M_G$ for its coinvariant quotient. Throughout this subsection, juxtaposition denotes exterior product. Put
+\[
+q:=u\wedge w+6\gamma\wedge\delta.
+\]
+The class $\overline\delta$ generates $V_G$, while $[\gamma\wedge\delta]$ denotes the generator of $(\bigwedge^2V)_G$ normalized by
+\[
+[u\wedge w]=6[\gamma\wedge\delta],
+\qquad
+[q]=12[\gamma\wedge\delta].
+\]
+The local specialization inputs are separated in the source. At the cusp, Theorem~B.1 identifies $H^q(W;\Z)$ with the monodromy-invariant lattice in a nearby fibre, so the cusp contributes no specialization cokernel. At the two finite fibres, Proposition~7.14 computes the finite-index specialization lattices, including the index-two degree-two specialization at the order-four point and the degree-three hypothesis $4\mid\varepsilon_2(v_2)$. Propositions~7.26--7.27 assemble these local inputs into the global Leray page and its transgressions.
+
+The integral specialization calculation imported in $\LCP$ gives the relevant global generators
+\[
+H^0(\Pone,R^1f_*\Z)=12\Z\gamma,
+\quad
+H^0(\Pone,R^2f_*\Z)=\Z\cdot2q,
+\quad
+H^0(\Pone,R^3f_*\Z)=\Z\cdot2\gamma uw,
+\]
+and the corresponding rank-one groups in column $a=2$ \cite[Props.~7.26--7.27]{S6}. It also gives the complete support needed below: among terms contributing to total degree at most three, apart from $E_2^{0,0}$, only
+\[
+E_2^{0,1},\ E_2^{0,2},\ E_2^{0,3},\ E_2^{2,0},\ E_2^{2,1}
+\]
+are nonzero; the additional group $E_2^{2,2}\cong\Z$ is the target that kills $E_2^{0,3}$. In particular,
+\[
+E_2^{1,0}=E_2^{1,1}=E_2^{1,2}=E_2^{3,0}=0,
+\]
+and columns $a\ge3$ vanish because the base is $\Pone$. The only relevant differentials are therefore
+\[
+d_2^{0,b}:E_2^{0,b}\longrightarrow E_2^{2,b-1}
+\qquad(b=1,2,3).
+\]
+
+Proposition~7.27 of \cite{S6} computes the first differential as the clutching obstruction of $12\gamma$, the smallest fibrewise class compatible with the order-three and order-four stabilizers. Its three boundary discrepancies are
+\[
+12\ell_0,
+\qquad
+-4\ell_1,
+\qquad
+-3\ell_2.
+\]
+Their sum is $p$, so
+\begin{equation}\label{eq:first-d2}
+d_2^{0,1}(12\gamma)=\pm p\,\omega,
+\end{equation}
+where $\omega$ generates $H^2(\Pone;\Z)$ \cite[Prop.~7.27]{S6}.
+
+The same proposition uses multiplicativity and the integral normalization of the specialization lattices to give, with one common sign,
+\begin{equation}\label{eq:three-d2}
+\begin{aligned}
+d_2^{0,1}(12\gamma)&=\pm p\,\omega,\\
+d_2^{0,2}(2q)&=\pm p\,\omega\overline\delta,\\
+d_2^{0,3}(2\gamma uw)&=\pm p\,\omega[\gamma\wedge\delta].
+\end{aligned}
+\end{equation}
+After the integral generators have been normalized, Proposition~7.27 forces the common sign by multiplicativity of the Leray spectral sequence. The vanishing argument below would need only three maps of the form $\times(\pm p)$; equality of their signs is the stronger multiplicative conclusion. This is the only place where the integral nearby-cycle and specialization calculations of $\LCP$ enter the global proof.
+
+Now $p=-1$. Hence every map in \cref{eq:three-d2} is an isomorphism of infinite cyclic groups. The abstract unit-transgression lemma, \cref{lem:unit-transgression}, gives
+\begin{equation}\label{eq:lowcohomology}
+H^1(X;\Z)=H^2(X;\Z)=H^3(X;\Z)=0.
+\end{equation}
+The universal coefficient theorem and Poincar\'e duality give the remaining middle groups:
+\begin{equation}\label{eq:homology-sphere}
+H_k(X;\Z)=
+\begin{cases}
+\Z,&k=0,6,\\
+0,&1\leq k\leq5.
+\end{cases}
+\end{equation}
+Thus $X$ is an integral homology six-sphere. This recovers the Leray conclusion recorded in \cite[Cor.~7.29]{S6}; that corollary is not an input to the short proof.
+
+The key economy is conceptual: van Kampen and Leray do not produce unrelated obstructions. They compute the same gluing integer $p$ in two languages. Unit defect means both that the last loop dies and that the last cohomology classes transgress isomorphically.
+
+\subsection{Recognition of the standard sphere}
+
+By \cref{eq:pi1trivial,eq:homology-sphere}, $X$ is simply connected and has the integral homology of $S^6$. Hurewicz and the homology Whitehead theorem imply that $X$ is a homotopy six-sphere. Smale's high-dimensional Poincar\'e theorem identifies it topologically with $S^6$~\cite{Smale}. Finally, the group of oriented smooth homotopy six-spheres is trivial:
+\[
+\Theta_6=0.
+\]
+Therefore $X$ is diffeomorphic to the standard smooth six-sphere~\cite{KM}. Transporting the already constructed complex atlas along this diffeomorphism gives an integrable complex structure on standard $S^6$, conditional on $\LCP$.
+
+This completes the proof of \cref{thm:main}.
+
+\subsection{The non-simplifiable residue}\label{sec:residue}
+
+The shortening above does not replace the analytic construction by linear algebra. It calls a small number of detailed source theorems, exactly as a short proof calls any substantial imported result. The first two pages of \cite{S6} summarize the same implementation stack:
+\begin{enumerate}[label=\textup{(R\arabic*)}]
+\item the period representation and global lattice condition \cite[\S2, Thm.~3.4]{S6};
+\item the cusp normal form, proper toric action, and $\Aroot$ quotient \cite[Prop.~3.21, Thm.~4.5, Props.~4.6--4.7]{S6};
+\item the two free logarithmic transforms and transport of their signed twists \cite[Def.~5.3, Thm.~5.4, Lem.~7.16]{S6};
+\item the Hausdorff compact global assembly \cite[Thm.~6.2, Prop.~6.3]{S6} and the normalized cusp regluing class \cite[Def.~6.6, Prop.~6.7, \S7.5]{S6};
+\item the invariant closure and geometric van Kampen boundary maps \cite[Lem.~2.7(iv), Lem.~7.4, Lem.~7.16, Thm.~7.17]{S6};
+\item the local specialization theorems and normalized Leray transgressions; see \cite[Thm.~B.1, Prop.~7.14, Props.~7.26--7.27]{S6}.
+\end{enumerate}
+These are the implementation layer of the construction, not additional conjectures introduced by this note. The role of the short proof is to expose how their outputs compose: once the world has been built, two unimodular certificates perform almost all of the remaining recognition.
+
+\subsection{Why the Campana--Demailly--Peternell argument is not a disproof}\label{sec:cdp-formal}
+
+Campana--Demailly--Peternell reduce a required fibrewise vanishing to a torsion-free differential test on each singular fibre \cite[p.~692]{CDP20}. The 2020 article presents itself as a corrigendum: its introduction notes that the earlier argument relied on a lemma ``incorrect in general'' and adapts the proof with special attention to the six-sphere case \cite[\S1]{CDP20}. In \S7, immediately after the conormal sequence, the authors write that ``it is immediate that it suffices to show---provided $L|_S$ is non-torsion---'' the torsion-free vanishing displayed below \cite[\S7, p.~692]{CDP20}. It is this implication that loses conductor-supported information at a non-normal fibre.
+
+Let $S$ be a reduced Cartier fibre, put
+\[
+\mathcal T:=\Tor\Omega_S^1,
+\]
+and, for $L\in\Pic(X)$, put
+\[
+A=(L^*\otimes\omega_X)|_S,
+\]
+the exact line-bundle twist appearing in the fibrewise duality argument. The non-torsion proviso is not an escape from the cusp example: \cite[Thm.~10.5(b)]{S6} shows that it is met at $W$ outside a countable exceptional set, and \cite[Prop.~10.8]{S6} supplies a global line bundle whose restriction is non-torsion on every fibre. The conormal sequence is
+\begin{equation}\label{eq:cdp-conormal}
+0\longrightarrow N_{S/X}^*\otimes A
+\longrightarrow \Omega_X^1|_S\otimes A
+\longrightarrow \Omega_S^1\otimes A
+\longrightarrow0.
+\end{equation}
+The two vanishings
+\[
+H^0(S,N_{S/X}^*\otimes A)=0,
+\qquad
+H^0\!\left(S,(\Omega_S^1/\mathcal T)\otimes A\right)=0
+\]
+do not imply
+\[
+H^0(S,\Omega_X^1|_S\otimes A)=0.
+\]
+They imply only that the image of an ambient section may lie in
+\[
+H^0(S,\mathcal T\otimes A).
+\]
+The missing step is therefore exactly the assertion that no nonzero ambient section can land in conductor torsion.
+
+For the proposed cusp fibre $W$, \cite[Thm.~10.5, Step~1]{S6} proves that every line bundle restricted from $X$ becomes trivial on the normalization $\eta:\widetilde W\to W$; in particular, $\eta^*A\cong\mathcal O_{\widetilde W}$ for the exact twist above. The global ghost section is then supplied by \cite[Lem.~10.3(a)--(c)]{S6}. Near a double crossing write the fibration as $g=uxy$, with $u$ a unit. On $W=\{xy=0\}$,
+\[
+dg|_W=u(y\,dx+x\,dy),
+\]
+and at either triple point the local form is $g=uxyz$. In both cases $dg|_W$ vanishes on the conductor. If $e$ trivializes $\eta^*A$, the section
+\[
+\eta^*(dg|_W)\otimes e
+\]
+descends by the normalization--conductor equalizer in \cref{lem:ghost}, even when the boundary values of $e$ do not agree: multiplication by $dg$ makes every value zero on the seam. The descended section
+\[
+s\in H^0(W,\Omega_X^1|_W\otimes A)
+\]
+is nonzero away from the singular locus, but its image in $\Omega_W^1\otimes A$ is torsion supported on the conductor. Hence
+\[
+s\longmapsto0
+\quad\text{in}\quad
+H^0\!\left(W,(\Omega_W^1/\mathcal T)\otimes A\right).
+\]
+For the general nontrivial twists used in \cite[\S10.4]{S6}, the fibre $W$ is connected and $\eta^*A$ is trivial, so \cite[Lem.~10.3(c)]{S6} gives $H^0(W,A)=0$. Hence $s$ cannot come from the conormal term; in particular, its conductor-supported image in $\Omega_W^1\otimes A$ is nonzero, although it vanishes after quotienting torsion. The same source calculation proves that the torsion-free flank vanishes. Thus the two flank groups can vanish while the middle group does not.
+
+Consequently,
+\[
+\boxed{\text{the published torsion-free reduction does not exclude the proposed construction.}}
+\]
+There are two conditional levels. The recognition theorem gives $H^1(X;\Z)=H^2(X;\Z)=0$, while the source's separate invariant theorem gives $a(X)=1$ and identifies $f$ as the holomorphic algebraic reduction \cite[Thm.~9.1]{S6}. Together with the compact complex threefold and holomorphic map already supplied by $\LCP$, these are the hypotheses of \cite[Thm.~2.2]{CDP20}; the proposed $X$ would then contradict its conclusions, as \cite[Cor.~10.6]{S6} records. Without the algebraic-dimension import, the boxed statement is the precise conclusion.
+
+This CDP discussion is logically separate from the recognition theorem: it reopens the claimed obstruction rather than constructing $X$. A secondary split-extension issue in the same literature is corrected by \cref{lem:split-extension}: the fibre contribution to an abelianization is its monodromy coinvariants, not generally the whole fibre homology. According to \cite[\S10.5]{S6}, the omitted monodromy causes the printed conclusions of \cite[Lem.~4.2, Cor.~5.2, Prop.~5.5]{CDP20} to fail for the proposed $X$. The source separately reconstructs the non-torsion line-bundle input needed later by the countability argument of \cite[Prop.~10.8]{S6}. Thus the monodromy route can be repaired for $X$; the conductor failure cannot.
+
+\section{The construction in context: a second proof for human understanding}\label{sec:explanation}
+
+This section gives the same recognition a second time, now in the order in which one would explain it at a blackboard. The detailed construction remains available through the source references, while every global step is made visible through a picture, a finite count, or a two-line integral calculation.
+
+\subsection{The historical route to this design}\label{sec:history-story}
+
+Hopf posed the complex-six-sphere problem in the 1940s~\cite{Hopf}. Borel and Serre later showed that, among spheres, only $S^2$ and $S^6$ admit almost-complex structures~\cite{BorelSerre}. The exceptional case is not accidental: octonionic multiplication gives $S^6$ a canonical and highly symmetric almost-complex structure. Yet that structure is not integrable, and the problem survived. A compact history and further references are given in~\cite{Feng}.
+
+The next decades progressively ruled out easy worlds. A complex $S^6$ cannot be K\"ahler because $H^2(S^6;\R)=0$. LeBrun ruled out integrable complex structures orthogonal to the round metric~\cite{LeBrun}. Campana--Demailly--Peternell's Corollary~2.3 states that a compact complex threefold homeomorphic to $S^6$ has algebraic dimension zero~\cite{CDP20}. The proposed construction does not return to the octonionic or round route. It builds a non-K\"ahler torus fibration of algebraic dimension one and identifies the exact place where the published torsion-free reduction fails at a non-normal fibre~\cite[\S10]{S6}. The point is not that a contradiction must be hidden somewhere: the two claims are separated by a visible conductor-supported section.
+
+The local moves themselves belong to a classical lineage. Degenerating a torus by an infinite toric model and then quotienting by a lattice is the higher-dimensional relative of the Tate-curve picture and Mumford's construction of degenerating abelian varieties~\cite{BHPV,Mumford}. Creating the two multiple fibres is the higher-dimensional relative of logarithmic transforms in elliptic-surface theory~\cite{BHPV}. The final integer
+\[
+12\ell_0-4\ell_1-3\ell_2
+\]
+has the same shape as the homology formula for a Seifert fibration over $S^2(3,4)$~\cite{Orlik}. Finally, once the manifold is a simply connected homology six-sphere, the last recognition step is classical high-dimensional topology~\cite{Smale,KM}.
+
+Thus the proposal is best understood not as one unprecedented mechanism, but as a precise synthesis of classical mechanisms one complex dimension higher, with non-polarizability and non-normality supplying the genuinely unusual features.
+
+\subsection{Build the complex manifold first}
+
+The usual formulation invites us to stare at the sphere and search for a complex operator on its tangent spaces. The construction instead assembles a complex world from pieces that are complex from birth. Holomorphic charts do not have to be made integrable later. Once the world is compact, only its smooth identity remains unknown.
+
+This is analogous to constructing a surface from polygons and then computing its genus. One does not first guess a metric on the final surface. One builds a consistent object and then reads its topology from the gluing.
+
+The world built here has a precise stage: the triangle group $\Delta(3,4,\infty)$ acts on the upper half-plane $\mathfrak H$, and the orbifold compactification of its quotient is $\Pone(3,4,\infty)$. On the smooth locus $B^\circ=\Pone\setminus\{p_0,p_1,p_2\}$, the equivariant periods $\tau,\mu,\beta$ assemble $\Pi(z)$ and descend to a holomorphic family $J\to B^\circ$ of complex two-tori~\cite[Prop.~2.11, Thm.~3.4]{S6}. The order-three point, the order-four point, and the cusp dictate the two logarithmic transforms and the toric filling; the rest of this section explains why these three completions close globally to the sphere.
+
+\subsection{One complex dimension above elliptic surfaces}
+
+An elliptic surface has a complex curve as fibre and a complex curve as base. Here the fibre is a complex two-torus, so the total space has complex dimension three:
+\[
+1\text{ complex base dimension}+2\text{ complex fibre dimensions}=3.
+\]
+In real dimensions this is
+\[
+2+4=6.
+\]
+The three local operations are higher-dimensional versions of familiar elliptic-surface mechanisms:
+\begin{center}
+\begin{tabular}{@{}ll@{}}
+\toprule
+Elliptic surface & Proposed threefold\\
+\midrule
+elliptic curve & complex two-torus\\
+Tate or nodal degeneration & $\Aroot$ toric degeneration\\
+multiple elliptic fibre & multiple bielliptic fibre\\
+cycle of rational curves & self-glued $\dP$ surface\\
+Dolgachev multiplicity arithmetic & $(3,4)$ twist arithmetic\\
+\bottomrule
+\end{tabular}
+\end{center}
+The analogy guides the local models, but it stops at polarization. The rank-four monodromy preserves only an indefinite alternating geometry. That failure is not an inconvenience that can be ignored; it is exactly why the construction can live in the non-K\"ahler world required by $b_2(S^6)=0$.
+
+\subsection{Square-zero means the exchange happens once}
+
+At the cusp the monodromy is $I+N$ with $N^2=0$. Algebraically, this means that applying the nontrivial part twice gives zero. The exponential therefore terminates:
+\[
+e^{sN}=I+sN.
+\]
+There are no hidden quadratic, cubic, or infinite correction terms. The cusp consists of two source directions transferred into two target directions, once.
+
+The transfer preserves the alternating pairing $Q_0$. It does not preserve a positive energy. The associated symmetric form has one positive and one negative direction, like a saddle rather than a bowl. This explains why the standard positive compactification machinery is unavailable and why an explicit toric universe must be built.
+
+\subsection{Finite averaging is both algebra and probability}
+
+At a point of monodromy order $m$, a vector can move around a finite orbit
+\[
+v,Av,A^2v,\ldots,A^{m-1}v.
+\]
+Its uniform average
+\[
+P_mv=\frac1m\sum_{k=0}^{m-1}A^kv
+\]
+is fixed by $A$. Applying the average twice changes nothing, so $P_m^2=P_m$.
+
+This can be read algebraically as a Reynolds projector or probabilistically as expectation over a uniform finite orbit. In either language, all orbit-dependent motion cancels and the invariant part remains.
+
+A useful fact in the six-sphere data is that one convenient primitive vector $\wideg$ serves both projectors. The denominators cancel on this chosen seed:
+\[
+P_3\wideg\in\Lambda,
+\qquad
+P_4\wideg\in\Lambda.
+\]
+Thus the local directions are not unrelated guesses. They are two views of a common global class through the order-three and order-four invariant projectors. Averaging answers \emph{which direction}; the final gluing answers \emph{which relative sign}. The construction takes $P_3\wideg$ and $-P_4\wideg$.
+
+\subsection{The singular fibre is an Euler reservoir}
+
+A torus has Euler characteristic zero. Consequently the whole smooth region of the fibration is invisible to the Euler number. The multiple bielliptic fibres are also Euler-invisible. The required value $e(S^6)=2$ must therefore be stored at the cusp.
+
+The $\Aroot$ triangulation supplies exactly two zero-dimensional strata after quotienting: the two triple points. Every positive-dimensional torus stratum has Euler characteristic zero. Hence the two points contribute the entire answer.
+
+This is why the combinatorics matters. One vertex orbit says there is one component. Three edge orbits say there are three seams. Two triangle orbits say there are two triple points. Geometry, incidence, and Euler arithmetic are three descriptions of the same finite quotient.
+
+\subsection{A unit does more than a zero}
+
+The proof closes not because an obstruction is set equal to zero, but because the relevant maps are units over $\Z$.
+
+For multiplication by an integer $p$,
+\[
+\Z\xrightarrow{\times p}\Z,
+\]
+there are three qualitatively different cases:
+\begin{center}
+\begin{tabular}{@{}cl@{}}
+\toprule
+$p=0$ & the source class survives freely;\\
+$|p|>1$ & a torsion residue $\Z/|p|$ survives;\\
+$|p|=1$ & the map is an integral isomorphism and leaves no residue.\\
+\bottomrule
+\end{tabular}
+\end{center}
+The cusp certificate $|\det B_0|=1$ says that no component residue remains locally. The global certificate $p=-1$ says that no loop or cohomology residue remains globally. The construction succeeds by two nontrivial but unimodular transfers.
+
+\subsection{Why the numbers three and four fit}
+
+For exceptional orders $m,n$, the generic gluing defect is
+\[
+p_{m,n}=mn\ell_0-n\ell_m-m\ell_n.
+\]
+Suppose both twists come from one seed by invariant averaging, the cusp gluing is untwisted, and the surviving values are $\ell_m=1$, $\ell_n=-1$. Then
+\[
+p_{m,n}=m-n.
+\]
+Thus consecutive orders automatically give a unit defect. For $3$ and $4$,
+\[
+p_{3,4}=-1.
+\]
+This does not prove that every consecutive pair supports the required complex-analytic family. It explains the topological selection rule: once a common projected seed exists, consecutive orders are exactly what make the final relation unimodular.
+
+\subsection{Cut, vanish, sew: keep seam information until the end}\label{sec:cdp-human}
+
+The published CDP reduction tests a singular fibre only after torsion differentials have been removed. At a normal fibre that can be harmless. At the non-normal fibre $W$, it deletes the gluing receipt.
+
+The mechanism has three moves.
+\begin{enumerate}
+\item \textbf{Cut.} Normalize $W$ by cutting it open along its conductor. A line bundle $A$ may become trivial upstairs, with frame $e$, even though the two boundary values of $e$ do not sew to a frame downstairs.
+\item \textbf{Vanish.} Locally the fibration is $g=uxy$ or $g=uxyz$. Its differential $dg$ vanishes on the conductor. Multiplying by $dg$ therefore turns both incompatible boundary values into zero.
+\item \textbf{Sew.} The product $dg\otimes e$ now descends to a genuine nonzero ambient differential on $W$. Its image is supported on the seam and is torsion, so the torsion-free quotient sends it to zero.
+\end{enumerate}
+
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}[
+  >=Latex,
+  node distance=12mm,
+  box/.style={draw,rounded corners,align=center,inner sep=6pt,font=\small}
+]
+\node[box,fill=SoftBlue] (cut) {\textbf{Cut}\\normalize $W$\\the frame exists upstairs};
+\node[box,fill=SoftGold,right=of cut] (vanish) {\textbf{Vanish}\\$dg|_{\mathrm{cond}}=0$\\the mismatch is killed};
+\node[box,fill=SoftGreen,right=of vanish] (sew) {\textbf{Sew}\\$dg\otimes e$ descends\\the quotient forgets it};
+\draw[->] (cut)--(vanish);
+\draw[->] (vanish)--(sew);
+\end{tikzpicture}
+\caption{The conductor channel. Normalization exposes a mismatch, the defining differential kills it exactly on the seam, and the product descends. Passing afterwards to torsion-free differentials erases the descended section rather than proving that it never existed.}
+\label{fig:cut-vanish-sew}
+\end{figure}
+
+This is the precise reason the two apparently conflicting statements can coexist. The CDP test sees zero because it is applied after the conductor-supported part has been quotiented away; the ambient group needed by the proof still contains the ghost section. Therefore CDP does not disprove the construction.
+
+The general lesson is broader than this dispute:
+\begin{center}
+\begin{minipage}{0.88\textwidth}
+An idempotent projection is safe only when the quantity one needs factors through it. At a non-normal seam, normalization or torsion removal can erase the very class that records successful descent.
+\end{minipage}
+\end{center}
+The finite projectors $P_3,P_4$ are safe because the global observable $\gamma$ factors through them. The torsion-free quotient is unsafe for this purpose because the conductor section lies in its kernel.
+
+\subsection{The blackboard proof closes}\label{sec:blackboard-close}
+
+Return to the world just named: the $\Delta(3,4,\infty)$-equivariant family $J\to B^\circ$ and its three prescribed completions. Import the six source interfaces in $\LCP$ that implement this world and supply its boundary and Leray maps. The recognition can now be checked without replaying the long coordinate development.
+\begin{enumerate}
+\item The cusp transfer matrix $B_0$ has determinant $1$, so the vertex torsor has one orbit. The $\Aroot$ quotient has one self-glued $\dP$ component, three seam orbits, and two triple points; hence $\chi(W)=2$.
+\item The finite averages $P_3\wideg$ and $P_4\wideg$ are integral fixed directions. The global gluing takes opposite signs, and the tautological cusp section has zero winding, giving $(\ell_0,\ell_1,\ell_2)=(0,1,-1)$.
+\item The imported boundary maps leave the fundamental-group relations with matrix
+\[
+\begin{pmatrix}3&-1\\4&-1\end{pmatrix},
+\qquad
+\begin{pmatrix}3&-1\\4&-1\end{pmatrix}^{-1}
+=
+\begin{pmatrix}-1&1\\-4&3\end{pmatrix}.
+\]
+Because the inverse is integral, no residual loop survives.
+\item The integral Leray calculation uses the same defect $p=-1$. Multiplication by $-1$ is an isomorphism on each remaining rank-one group, so no middle cohomology survives.
+\item A simply connected integral homology six-sphere is a homotopy six-sphere; in dimension six there is no exotic smooth sphere. Therefore the underlying smooth manifold is the standard $S^6$.
+\end{enumerate}
+This is the complete second proof of the recognition step. The hard work lies in creating the local complex world; after it exists, two integral units do almost all of the global work.
+
+\section{Reusable results, formal interfaces, and lessons}\label{sec:lemmas}
+
+This section extracts the proof mechanisms in library form. The statements are called lemmas, theorems, or principles in standard mathematical language because proofs follow; their role is that of exported interfaces. They can be reused in other torus fibrations, orbifold gluings, singular-fibre arguments, and formal developments.
+
+\subsection{Square-zero exchange}
+
+\begin{lemma}[Square-zero exchange]\label{lem:square-zero-exchange}
+Let $R$ be a commutative ring, $M$ an $R$-module, and $N\in\operatorname{End}_R(M)$ with $N^2=0$. For $s\in R$, put $E_s=I+sN$. Then
+\[
+E_sE_t=E_{s+t},
+\qquad
+E_s^{-1}=E_{-s}.
+\]
+If $Q:M\times M\to R$ is bilinear and
+\[
+Q(Nx,y)+Q(x,Ny)=0
+\qquad\text{for all }x,y,
+\]
+then $Q(E_sx,E_sy)=Q(x,y)$ for every $s$.
+\end{lemma}
+
+\begin{proof}
+Since $N^2=0$,
+\[
+(I+sN)(I+tN)=I+(s+t)N+stN^2=I+(s+t)N.
+\]
+Taking $t=-s$ gives the inverse. For the pairing, expand:
+\[
+Q(E_sx,E_sy)=Q(x,y)+s\bigl(Q(Nx,y)+Q(x,Ny)\bigr)+s^2Q(Nx,Ny).
+\]
+The linear term vanishes by hypothesis. Applying the same hypothesis to $(x,Ny)$ gives
+\[
+Q(Nx,Ny)=-Q(x,N^2y)=0.
+\]
+Hence the quadratic term vanishes as well.
+\end{proof}
+
+\subsection{Cyclic averaging}
+
+\begin{lemma}[Finite cyclic averaging projector]\label{lem:cyclic-projector}
+Let $K$ be a field whose characteristic does not divide $m$, let $M$ be a finite-dimensional $K$-vector space, and let $A\in\operatorname{GL}(M)$ satisfy $A^m=I$. Define
+\[
+P_m=\frac1m\sum_{k=0}^{m-1}A^k.
+\]
+Then
+\[
+AP_m=P_mA=P_m,
+\qquad
+P_m^2=P_m,
+\qquad
+\im P_m=\ker(A-I).
+\]
+\end{lemma}
+
+\begin{proof}
+The cyclic shift of the sum gives
+\[
+AP_m=\frac1m\sum_{k=0}^{m-1}A^{k+1}
+=\frac1m\sum_{k=0}^{m-1}A^k=P_m,
+\]
+using $A^m=I$. The same argument gives $P_mA=P_m$. Therefore $P_mx$ is fixed by $A$, so $\im P_m\subseteq\ker(A-I)$. Conversely, if $Ax=x$, then every summand $A^kx$ equals $x$, hence $P_mx=x$. Thus the image is exactly the fixed subspace. Since $P_mx$ is fixed, applying $P_m$ again leaves it unchanged: $P_m^2=P_m$.
+\end{proof}
+
+\begin{lemma}[Invariant observables survive averaging]\label{lem:observable}
+Under the hypotheses of \cref{lem:cyclic-projector}, let $\lambda:M\to K$ be linear and satisfy $\lambda\circ A=\lambda$. Then
+\[
+\lambda\circ P_m=\lambda.
+\]
+In particular, if $g$ is a seed with $\lambda(g)=1$, then every integral vector $P_mg$ has observable value $1$.
+\end{lemma}
+
+\begin{proof}
+For every $k$, $\lambda(A^kx)=\lambda(x)$. Hence
+\[
+\lambda(P_mx)=\frac1m\sum_{k=0}^{m-1}\lambda(A^kx)
+=\frac1m\sum_{k=0}^{m-1}\lambda(x)=\lambda(x).
+\]
+\end{proof}
+
+\begin{proposition}[Explicit projector certificate for the six-sphere data]\label{prop:projector-certificate}
+For $A_1,A_2$ in \cref{eq:A1A2}, the projectors in \cref{eq:P3P4} satisfy
+\[
+P_3^2=P_3,
+\quad
+P_4^2=P_4,
+\quad
+P_3\wideg=\eps,
+\quad
+P_4\wideg=\epsp,
+\]
+and
+\[
+A_1\eps=\eps,
+\qquad
+A_2\epsp=\epsp,
+\qquad
+\gamma(\eps)=\gamma(\epsp)=1.
+\]
+\end{proposition}
+
+\begin{proof}
+The order identities $A_1^3=I$ and $A_2^4=I$ give idempotence by \cref{lem:cyclic-projector}. Multiplying the displayed matrices by $(1,0,0,0)^t$ gives
+\[
+(1,2,-4,0)^t,
+\qquad
+(1,3,-3,0)^t.
+\]
+Multiplication by $A_1,A_2$ verifies fixedness. Their first coordinates are $1$, which is evaluation by $\gamma$.
+\end{proof}
+
+\begin{remark}[The integrality test]
+A cyclic average is generally only rational. Write
+\[
+g=a\wideg+b\wideu+c\widew+d\wided\in\Lambda.
+\]
+The displayed projectors give
+\[
+P_3g\in\Lambda\iff 3\mid(2b+c)\iff b\equiv c\pmod3,
+\]
+and
+\[
+P_4g\in\Lambda\iff 2\mid(b+c)\iff b\equiv c\pmod2.
+\]
+Consequently
+\[
+\boxed{P_3g,\ P_4g\in\Lambda\iff b\equiv c\pmod6.}
+\]
+The projectors are canonical; the seed is a choice. The vector $\wideg$ is the simplest primitive choice and yields representatives with zero $\wided$-coordinate.
+\end{remark}
+
+\subsection{Component count from a lattice determinant}
+
+\begin{lemma}[Unimodular component-count lemma]\label{lem:component-index}
+Let the vertices of an $L$-periodic polyhedral decomposition form an $L$-torsor, with $L\cong\Z^r$, and let an acting lattice $L'$ map into $L$ by a full-rank integral matrix $B$. Then the number of vertex orbits under $L'$ is
+\[
+[L:\im B]=|\det B|.
+\]
+In particular, if $B$ is unimodular, there is one vertex orbit.
+\end{lemma}
+
+\begin{proof}
+Choose a base vertex; the torsor structure identifies the full vertex set with $L$. Two vertices lie in the same $L'$-orbit exactly when their difference lies in $\im B$. Thus the orbit set is $L/\im B$. For a full-rank integral matrix, the order of this quotient is the product of the Smith invariants, namely $|\det B|$.
+\end{proof}
+
+\begin{remark}
+In a toric degeneration whose irreducible components correspond to vertex orbits, the same determinant counts components. This is the precise passage from the algebraic certificate $|\det B_0|=1$ to the geometric statement that $W$ is irreducible.
+\end{remark}
+
+\subsection{The generic two-fibre gluing group}
+
+\begin{theorem}[Two-exceptional-fibre gluing theorem]\label{thm:gluing-group}
+Let $m,n\ge2$ be coprime and let $\ell_0,\ell_m,\ell_n\in\Z$. Define
+\[
+G=\left\langle c,x,y\ \middle|\
+ c\text{ central},\quad
+ xy=c^{\ell_0},\quad
+ x^m=c^{\ell_m},\quad
+ y^n=c^{\ell_n}
+\right\rangle.
+\]
+Put
+\begin{equation}\label{eq:general-defect}
+p_{m,n}=mn\ell_0-n\ell_m-m\ell_n.
+\end{equation}
+Then $G$ is abelian and
+\[
+G\cong
+\begin{cases}
+\Z,&p_{m,n}=0,\\
+\Z/|p_{m,n}|,&p_{m,n}\ne0.
+\end{cases}
+\]
+\end{theorem}
+
+\begin{proof}
+The relation $xy=c^{\ell_0}$ gives
+\[
+y=x^{-1}c^{\ell_0}.
+\]
+Since $c$ is central, $x$ and $y$ commute, so $G$ is abelian. In additive notation with generators $(x,c)$, the two remaining relations are represented, after multiplying the second by $-1$, by
+\[
+R=
+\begin{pmatrix}
+m&-\ell_m\\
+n&\ell_n-n\ell_0
+\end{pmatrix}.
+\]
+Its determinant is
+\[
+\det R=m\ell_n-mn\ell_0+n\ell_m=-p_{m,n}.
+\]
+Because $\gcd(m,n)=1$, the greatest common divisor of all entries of $R$ is $1$. Hence the first Smith invariant is $1$. If $\det R\ne0$, the second is $|\det R|=|p_{m,n}|$, giving the stated cyclic group. If $\det R=0$, the rank is one and the cokernel is infinite cyclic.
+\end{proof}
+
+\begin{corollary}[Common projected seed]\label{cor:projected-defect}
+Assume the twists at orders $m,n$ arise from a common seed $g$ by
+\[
+v_m=P_mg,
+\qquad
+v_n=-P_ng,
+\]
+where the integral observable $\gamma$ is invariant under both actions,
+\[
+\gamma\circ A_m=\gamma,
+\qquad
+\gamma\circ A_n=\gamma,
+\]
+and satisfies $\gamma(g)=1$, and assume the cusp gluing is untwisted, meaning $\ell_0=0$. If the projected twists are integral, then
+\[
+\ell_0=0,
+\qquad
+\ell_m=1,
+\qquad
+\ell_n=-1,
+\qquad
+p_{m,n}=m-n.
+\]
+\end{corollary}
+
+\begin{proof}
+By \cref{lem:observable}, $\gamma(P_mg)=\gamma(P_ng)=1$. The sign on $v_n$ gives $\ell_n=-1$. Substitute into \cref{eq:general-defect}.
+\end{proof}
+
+\begin{corollary}[Consecutive-order unit principle]\label{cor:consecutive}
+Under the hypotheses of \cref{cor:projected-defect}, if $n=m+1$, then $p_{m,n}=-1$ and the gluing group is trivial.
+\end{corollary}
+
+\begin{proof}
+The defect is $m-(m+1)=-1$, so \cref{thm:gluing-group} applies.
+\end{proof}
+
+\subsection{Unit transgressions}
+
+\begin{lemma}[Low-degree unit-transgression lemma]\label{lem:unit-transgression}
+Let $E_r^{a,b}\Rightarrow H^{a+b}$ be a convergent first-quadrant spectral sequence of abelian groups, and let $p\ne0$. Suppose that:
+\begin{enumerate}
+\item among the $E_2$-terms contributing to total degree at most three, apart from $E_2^{0,0}$, the only nonzero ones are
+\[
+E_2^{0,1},\ E_2^{0,2},\ E_2^{0,3},\ E_2^{2,0},\ E_2^{2,1},
+\]
+and each is isomorphic to $\Z$;
+\item $E_2^{2,2}\cong\Z$, and no differential other than
+\[
+d_2^{0,b}:E_2^{0,b}\longrightarrow E_2^{2,b-1}
+\qquad(b=1,2,3)
+\]
+hits or leaves a term contributing to total degree at most three;
+\item for each $b\in\{1,2,3\}$ there is a sign $\epsilon_b\in\{\pm1\}$ such that, in chosen generators, $d_2^{0,b}$ is multiplication by $\epsilon_b p$.
+\end{enumerate}
+Then
+\[
+H^1=0,
+\qquad
+H^2\cong H^3\cong\Z/|p|.
+\]
+In particular, if $p$ is a unit, then $H^1=H^2=H^3=0$.
+\end{lemma}
+
+\begin{proof}
+Multiplication by each nonzero $\epsilon_b p$ on $\Z$ is injective, so $E_\infty^{0,b}=0$ for $b=1,2,3$. In total degree two, the only surviving graded piece is
+\[
+E_\infty^{2,0}=\coker(\times(\epsilon_1p))\cong\Z/|p|.
+\]
+In total degree three, the only surviving graded piece is
+\[
+E_\infty^{2,1}=\coker(\times(\epsilon_2p))\cong\Z/|p|.
+\]
+There is no extension ambiguity because each abutment has only one nonzero graded piece. In degree one every graded piece vanishes.
+\end{proof}
+
+\subsection{Euler localization}
+
+\begin{lemma}[Euler localization with compact supports]\label{lem:euler-localization}
+Let $f:X\to C$ be a proper map of complex analytic spaces of finite constructible type. Suppose $C$ has a finite stratification such that $f$ is topologically locally trivial over each stratum. Then
+\[
+\chic(X)=\sum_{S\subset C}\chic(S)\,\chic(F_S),
+\]
+where $F_S$ is the fibre over the stratum $S$. If $X$ is compact, then $\chi(X)=\chic(X)$. In particular, if the generic fibre has Euler characteristic zero and the exceptional strata are points,
+\[
+\chi(X)=\sum_{s\in\Sigma}\chi(f^{-1}(s)).
+\]
+\end{lemma}
+
+\begin{proof}
+Compactly supported Euler characteristic is additive over finite constructible decompositions and multiplicative for locally trivial fibrations of finite type. Apply these properties to the inverse images of the strata. Compactness identifies ordinary and compactly supported Euler characteristic on $X$.
+\end{proof}
+
+\subsection{Abelianization of a split extension}
+
+The following standard calculation is also \cite[Lem.~10.7]{S6}; we repeat its short proof because the statement is independently reusable.
+
+\begin{lemma}[Split extension remembers coinvariants]\label{lem:split-extension}
+If
+\[
+1\longrightarrow K\longrightarrow G\longrightarrow Q\longrightarrow1
+\]
+is split exact, then
+\[
+G^{\mathrm{ab}}\cong Q^{\mathrm{ab}}\oplus(K^{\mathrm{ab}})_Q,
+\]
+where the second term denotes coinvariants for the conjugation action of $Q$.
+\end{lemma}
+
+\begin{proof}
+Write $G=K\rtimes Q$. In the abelianization, commutators internal to $K$ vanish, and every relation
+\[
+qkq^{-1}=k
+\]
+identifies the class of $k$ with its $Q$-translate. Thus the image of $K$ is precisely $(K^{\mathrm{ab}})_Q$. The splitting embeds $Q^{\mathrm{ab}}$, and the two summands commute and intersect trivially. Equivalently, quotient $K$ by the subgroup generated by $[K,K]$ and all $k^{-1}qkq^{-1}$, then abelianize the resulting direct product.
+\end{proof}
+
+\subsection{A conductor-safe warning}
+
+\begin{lemma}[Ghost section at a non-normal normal-crossings fibre]\label{lem:ghost}
+Let $g:\mathcal X\to\Delta$ be a proper holomorphic map from a smooth complex threefold to a disc. Let $S=g^{-1}(0)$ be a reduced connected normal-crossings fibre, possibly non-normal, with normalization $\eta:\widetilde S\to S$. Let $A$ be a line bundle on $S$ such that $\eta^*A$ is trivial. Then a trivialization $e$ of $\eta^*A$ produces a nonzero section
+\[
+s\in H^0(S,\Omega^1_{\mathcal X}|_S\otimes A)
+\]
+whose image in
+\[
+H^0(S,(\Omega_S^1/\mathrm{torsion})\otimes A)
+\]
+is zero. If $A\not\cong\mathcal O_S$, then, because $S$ is the principal fibre of $g$,
+\[
+N^*_{S/\mathcal X}\cong\mathcal O_S,
+\qquad
+H^0(S,N^*_{S/\mathcal X}\otimes A)=H^0(S,A)=0.
+\]
+Thus the section does not come from the conormal term, and its image in $\Omega_S^1\otimes A$ is nonzero torsion supported on the conductor.
+\end{lemma}
+
+\begin{proof}
+Let $D\subset S$ be the conductor locus, let $\widetilde D=\eta^{-1}(D)$, and put $E=\Omega^1_{\mathcal X}|_S\otimes A$. Because $E$ is locally free on $S$, the normalization--conductor square gives the equalizer
+\[
+H^0(S,E)=
+\left\{
+(\widetilde s,s_D)\in H^0(\widetilde S,\eta^*E)\times H^0(D,E|_D)
+\ \middle|\
+\widetilde s|_{\widetilde D}=\eta_D^*s_D
+\right\},
+\]
+where $\eta_D:\widetilde D\to D$ is the induced map. Locally along a double or triple crossing, choose coordinates with $g=uxy$ or $g=uxyz$, where $u$ is a unit. The differential $dg|_S$ lies in the conductor ideal and vanishes on $D$, including the triple points. Therefore the pair
+\[
+\left(\eta^*(dg|_S)\otimes e,\ 0\right)
+\]
+satisfies the equalizer condition and descends to a section $s\in H^0(S,E)$. It is nonzero away from the singular locus. Its image in $\Omega_S^1\otimes A$ is torsion supported on the conductor, so it vanishes in the torsion-free quotient.
+
+Assume now that $A\not\cong\mathcal O_S$. Let $\sigma\in H^0(S,A)$. On each connected component of the compact normalization, $\eta^*\sigma$ is a constant multiple of the chosen trivialization $e$. Compatibility along the conductor and connectedness of $S$ force these constants either all to vanish or all to be nonzero. In the latter case $\sigma$ is nowhere vanishing and trivializes $A$. Hence $H^0(S,A)=0$. Since $S$ is cut out by the base coordinate, its conormal bundle is trivial, so
+\[
+H^0(S,N^*_{S/\mathcal X}\otimes A)=H^0(S,A)=0.
+\]
+Thus $s$ cannot come from the conormal term. If its image in $\Omega_S^1\otimes A$ were already zero, exactness of the conormal sequence would place $s$ in that term, a contradiction. Hence the conductor-supported torsion image is nonzero.
+\end{proof}
+
+\begin{corollary}[Torsion-free flank tests need not control the middle sheaf]\label{cor:ghost-flanks}
+Under the hypotheses of \cref{lem:ghost}, assume $A\not\cong\mathcal O_S$ and
+\[
+H^0\!\left(S,(\Omega_S^1/\Tor\Omega_S^1)\otimes A\right)=0.
+\]
+Then
+\[
+H^0(S,N^*_{S/\mathcal X}\otimes A)=0,
+\qquad
+H^0(S,\Omega_{\mathcal X}^1|_S\otimes A)\ne0.
+\]
+Thus the two flank vanishings do not imply vanishing of the middle term in the conormal sequence.
+\end{corollary}
+
+\begin{proof}
+The conormal vanishing follows from \cref{lem:ghost}. The section supplied there is nonzero in the middle group and maps to zero in the torsion-free quotient.
+\end{proof}
+
+\begin{principle}[Conductor-safe projection]\label{pr:conductor-safe}
+Before replacing a sheaf on a non-normal space by a torsion-free quotient or by data on its normalization, verify that the obstruction or conserved class being studied factors through that projection. Idempotence of the projection alone is not sufficient.
+\end{principle}
+
+\subsection{Formalization interfaces and current status}\label{sec:formalization}
+
+\subsubsection{The algebraic source and pending V10 rebuild}
+
+Source, audit evidence, and reproduction instructions are maintained at \url{https://github.com/fabianx-ai/s6-proof}. The V10 bundle contains a proposed refactor of the concrete finite certificates that removes every use of \texttt{native\_decide} in favour of kernel-reducible proof scripts. Its mathematical scope remains deliberately modular:
+\begin{itemize}
+\item \texttt{CyclicAverage}: finite cyclic averaging, fixed-subspace projection, and preservation of invariant observables;
+\item \texttt{SquareZeroExchange}: the law $E_sE_t=E_{s+t}$, inverse $E_{-s}$, and conservation of bilinear forms;
+\item \texttt{LatticeOrbitIndex}: lattice cokernels and the determinant-one orbit certificate for $B_0$;
+\item \texttt{SplitExtension}: abelianization of a semidirect product through monodromy coinvariants;
+\item \texttt{TwoExceptionalGluing}: the generic defect arithmetic and the classification of the associated relation cokernel once the geometric presentation is supplied;
+\item \texttt{UnitTransgression}: the final filtration-consumption step once the low-degree graded pieces have been identified;
+\item \texttt{S6Shortcuts}: the concrete matrices, projectors, twists, inverse matrices, defect, and Euler arithmetic.
+\end{itemize}
+
+\textbf{PLACEHOLDER (formal release gate).} Before publication, run the pinned clean build and the per-theorem axiom audit described in \texttt{formal/BUILD\_REPORT\_V10.md}; replace this paragraph with the verified commit, toolchain, source-tree hash, build result, and axiom report. Until that gate is closed, V10 makes no claim that the refactored Lean tree compiles.
+
+The semantic boundaries are unchanged. First, \texttt{UnitTransgression} assumes the repaired filtration data; it does not derive the Leray page from nearby cycles. Second, the current gluing file proves that the literal presented group is abelian and separately classifies the integral relation cokernel, but it does not yet contain an equivalence identifying those two formal objects. The elementary group proof in \cref{thm:gluing-group} is therefore still the paper-level bridge.
+
+\subsubsection{The next formal layers}
+
+The long source already proves the remaining mathematical inputs. A complete formal composition would next encode them as theorem interfaces:
+\begin{enumerate}
+\item equivariant period matrices and descent of analytic families of complex tori;
+\item the proper toric quotient and extension across the square-zero degeneration;
+\item the two logarithmic transforms and their freeness criteria;
+\item the geometric boundary maps giving \cref{eq:presentation};
+\item integral nearby cycles and the multiplicative Leray page;
+\item the normalization--conductor descent used by the ghost section.
+\end{enumerate}
+
+The natural library order is therefore
+\[
+\begin{gathered}
+\text{finite algebraic helpers}
+\longrightarrow
+\text{geometric boundary interfaces}
+\\[-1pt]
+\longrightarrow
+\text{analytic construction interfaces}
+\longrightarrow
+\text{formal recognition theorem}.
+\end{gathered}
+\]
+The first layer is encoded. Its V10 trust-boundary rebuild remains the \textbf{PLACEHOLDER} gate above. The next load-bearing Lean theorem is an explicit equivalence between the presented gluing group and its classified relation cokernel.
+
+\subsection{Finite certificates at a glance}\label{sec:certificates}
+
+
+For convenient auditing, the complete finite core is collected here.
+
+\begin{align*}
+T_1^3&=I,&T_2^4&=I,\\
+T_0&=(T_1T_2)^{-1}=I+N,&N^2&=0,\\
+T_j^tQ_0T_j&=Q_0,&N^tQ_0+Q_0N&=0,\\
+A_j&=(T_j^{-1})^t,&A_1^3=A_2^4&=I,\\
+P_3&=\tfrac13(I+A_1+A_1^2),&P_4&=\tfrac14(I+A_2+A_2^2+A_2^3),\\
+P_3^2&=P_3,&P_4^2&=P_4,\\
+P_3\wideg&=(1,2,-4,0)^t,&P_4\wideg&=(1,3,-3,0)^t,\\
+A_1P_3\wideg&=P_3\wideg,&A_2P_4\wideg&=P_4\wideg,\\
+(\ell_0,\ell_1,\ell_2)&=(0,1,-1),&p&=-1,\\
+B_0&=\begin{pmatrix}0&1\\-1&0\end{pmatrix},&B_0^{-1}&=\begin{pmatrix}0&-1\\1&0\end{pmatrix},\\
+R&=\begin{pmatrix}3&-1\\4&-1\end{pmatrix},&R^{-1}&=\begin{pmatrix}-1&1\\-4&3\end{pmatrix},\\
+\chi(W)&=0+3\cdot0+2=2.&&
+\end{align*}
+
+The two displayed inverse matrices are the most compact certificates:
+\[
+B_0\in\operatorname{GL}_2(\Z),
+\qquad
+R\in\operatorname{GL}_2(\Z).
+\]
+One controls local components; the other controls global topology.
+
+
+\subsection{Formalization coverage map}\label{sec:coverage}
+
+\begin{center}
+\small
+\begin{tabularx}{\textwidth}{@{}X>{\raggedright\arraybackslash}p{0.23\textwidth}>{\raggedright\arraybackslash}p{0.27\textwidth}@{}}
+\toprule
+Statement & Paper location & Companion Lean status\\
+\midrule
+Orders of $T_1,T_2$; square-zero $N$ & \cref{sec:lattice} & V10 source encoded; build pending\\
+Invariant pairing and exchange conservation & \cref{sec:lattice} & V10 helper and instance encoded; build pending\\
+Explicit $P_3,P_4$ and projected directions & \cref{sec:projectors} & V10 helper and instance encoded; build pending\\
+$B_0$ determinant-one orbit quotient & \cref{eq:B0,lem:component-index} & V10 theorem encoded; build pending\\
+Generic defect and consecutive-order identity & \cref{thm:gluing-group,cor:consecutive} & V10 arithmetic encoded; build pending\\
+Literal presented group $\leftrightarrow$ relation cokernel & \cref{thm:gluing-group} & equivalence still to be added\\
+Low-degree unit filtration bookkeeping & \cref{lem:unit-transgression} & V10 consumer encoded; build pending\\
+Split-extension coinvariants & \cref{lem:split-extension} & V10 theorem encoded; build pending\\
+Analytic period family and three fillings & $\LCP$(L1)--(L3) & source theorems; not formalized\\
+Global assembly and boundary maps & $\LCP$(L4)--(L5) & source theorems; not formalized\\
+Nearby cycles and integral Leray & $\LCP$(L6) & source theorem; not formalized\\
+Conductor ghost & \cref{lem:ghost} & paper proof; not formalized\\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+
+\subsection{Verification routing: six interfaces, three dependency layers}
+\label{sec:verification-routing}
+
+The six interfaces of $\LCP$ form a depth-three dependency graph:
+\[
+\begin{gathered}
+\mathrm{L1}\qquad \mathrm{L2}\qquad \mathrm{L3}
+\\[-2pt]
+\searrow\qquad \downarrow\qquad \swarrow
+\\[-2pt]
+\mathrm{L4}
+\\[-2pt]
+\swarrow\qquad\searrow
+\\[-2pt]
+\mathrm{L5}\qquad\mathrm{L6}.
+\end{gathered}
+\]
+Here L1--L3 construct the three local parts of the world: the admissible period family satisfying $(\beta3)$, the cusp filling, and the two finite-monodromy fillings. L4 assembles them into the compact Hausdorff threefold. L5 and L6 are the two global consumers: the boundary-topology calculation and the integral Leray calculation. The dependency order is therefore
+\[
+\text{local construction}
+\longrightarrow
+\text{global assembly}
+\longrightarrow
+\text{topological recognition}.
+\]
+
+The finite certificates in \cref{sec:certificates} are cross-checks at these interfaces, not substitutes for the analytic or topological proofs imported from the source. Three shared data localize any disagreement:
+\[
+\mathrm{L2}\xrightarrow{\ B_0\ }\mathrm{L4},
+\qquad
+\mathrm{L3}\xrightarrow{\ (v_1,v_2)\ }\mathrm{L5},
+\qquad
+\mathrm{L5}\xleftrightarrow{\ p=-1\ }\mathrm{L6}.
+\]
+The first controls the cusp quotient used in the global assembly; the second transports the signed local fillings into the boundary presentation; the third is computed in two separate global consumers---van Kampen and Leray---once the shared signed gluing data have been fixed. Their agreement is therefore a cross-interface consistency check. A mismatch points to a particular interface rather than to the finite recognition argument as a whole.
+
+The analytic burden is uneven. L1 is an existence theorem for global equivariant periods and a lattice at every point. L5 and L6 become finite and integral only after the source boundary and specialization maps have been established. L6 begins locally with Theorem~B.1 at $p_0$ and Proposition~7.14 at $p_1,p_2$, before their assembly in Propositions~7.26--7.27. The present repository records the finite checks and the audit structure; it does not certify L1 or replace those geometric maps.
+
+The CDP comparison is a separate side audit, outside $\LCP$: it compares the printed reduction in \cite[\S7]{CDP20} with the conductor calculation in \cite[\S10]{S6}, but it is not a predecessor of \cref{thm:main}.
+
+The paper fixes the invariant dependency graph; the evolving audit evidence belongs in the companion repository. Detailed interface records and reproduction notes are maintained under \texttt{audits/} at \url{https://github.com/fabianx-ai/s6-proof}.
+
+\subsection{Lessons for mathematical practice}\label{sec:lessons}
+
+The construction and its compression support the following general lessons. They are methodological conclusions, not additional assumptions in the proof.
+
+\begin{principle}[Lessons extracted from the construction]\label{pr:lessons}
+\begin{enumerate}[label=\textup{(\arabic*)}]
+\item \textbf{Build structure into the object when possible.} A difficult integrability problem can sometimes be replaced by constructing holomorphic local models first and proving a recognition theorem afterwards.
+\item \textbf{Import detailed proofs at exact interfaces.} Analytic construction, finite lattice algebra, boundary topology, and smooth recognition should be separated and cited at their first point of use. A short proof remains rigorous because the citation is a theorem import, not because every implementation detail is replayed.
+\item \textbf{Average before solving fixed-vector equations.} For finite monodromy, the Reynolds projector gives the invariant component canonically once a seed is chosen. Integrality and primitivity are then finite arithmetic questions; any relative sign required by global gluing must remain separate and explicit.
+\item \textbf{Over $\Z$, units are the exact closure certificates.} Vanishing is not the only successful outcome. A nonzero determinant of absolute value one performs a complete transfer while leaving no free class, torsion class, or extra component.
+\item \textbf{Let boundary monodromy choose the local model.} Finite-order monodromy and unipotent monodromy encode different geometric closures; forcing them into one compactification mechanism can conceal the essential geometry.
+\item \textbf{Projection requires a conservation check.} Idempotence alone does not make a quotient safe. On a non-normal space, one must verify that the class under study survives normalization, torsion removal, or any other projection.
+\item \textbf{Formal scope is semantic, not merely syntactic.} A successful build proves the encoded statements. A formal library becomes a proof of the paper only when the interfaces are connected to the mathematical objects they are meant to represent.
+\end{enumerate}
+\end{principle}
+
+Together these lessons explain why the short proof is more than a summary. It changes the unit of understanding: the long source remains available as the detailed implementation, while this note routes its outputs through a small set of reusable interfaces and two explicit unimodular certificates.
+
+\section{Open directions}\label{sec:open}
+
+The short route now suggests a focused formalization program and a wider research horizon. The following directions enrich the construction without changing its proof spine.
+
+\subsection{Formalize and independently reread the source interfaces}
+
+The long manuscript supplies proofs of the six imported interfaces in $\LCP$. The highest-value next step is to translate those proofs into smaller formal objects, or to rederive them independently, with attention concentrated where conventions carry integral information:
+
+Within the topological package, two convention-sensitive interfaces deserve first priority: Lemma~7.16's transport of the signed twists, and Propositions~7.26--7.27's integral generator normalizations. The first distinguishes the sphere case from the $\Z/7$ comparison; the second is what turns the three geometric transgressions into integral units.
+\begin{itemize}
+\item the admissible parameter $c_0$ and the global lattice condition $(\beta3)$ throughout the upper half-plane;
+\item holomorphic extension of the regular cusp term $C(t_c)$;
+\item proper discontinuity and separatedness of the toric and global quotient actions;
+\item the transport in Lemma~7.16 of the chosen signed twists into the two meridian relations;
+\item the boundary maps that produce \cref{eq:presentation};
+\item the index-two specialization subtlety at the order-four fibre;
+\item Theorem~B.1 at the cusp, Proposition~7.14 at the finite fibres, and the multiplicative common-sign calculation of Propositions~7.26--7.27.
+\end{itemize}
+The source already organizes these tasks by theorem. Formalization can therefore proceed module by module without disturbing the short recognition route.
+
+\subsection{Classify admissible triangle representations}
+
+The consecutive-order principle isolates a topological preference, but not an existence theorem. One should classify rank-four integral representations generated by finite-order elements $A_m,A_n$ such that:
+\begin{enumerate}
+\item $(A_mA_n)^{-1}$ is unipotent with square-zero logarithm of rank two;
+\item the coinvariants have rank one;
+\item the induced cusp exchange is unimodular;
+\item a common primitive seed has integral cyclic averages;
+\item the representation admits a holomorphic period realization with the required non-polarizable signature.
+\end{enumerate}
+This would decide whether $(3,4,\infty)$ is isolated or belongs to a family of consecutive-order constructions.
+
+\subsection{Formalize the toric quotient}
+
+The cusp is the most promising large formal target because much of it is combinatorial. A formal proof could separate:
+\begin{itemize}
+\item the $\Aroot$ fan and its smoothness;
+\item the periodic lattice action;
+\item the orbit count from $\det B_0$;
+\item the incidence description of $W$;
+\item the Euler computation;
+\item the analytic correction by $C(t_c)$.
+\end{itemize}
+The first five are amenable to algebraic and combinatorial libraries before the analytic quotient is formalized.
+
+\subsection{Conductor-aware replacement for torsion-free tests}
+
+The ghost-section lemma suggests a general repair problem. What invariant should replace $\Omega_S^1/\mathrm{torsion}$ at a non-normal fibre so that conductor information is retained? Candidates should be formulated in terms of the normalization-conductor square, logarithmic differentials, or a derived object that remembers the gluing class.
+
+\subsection{Moduli and remaining invariants}
+
+The period function is $\beta=\beta_{\mathrm{part}}+c_0$, with the admissible range $\operatorname{Im}c_0<-M$ imposed by $(\beta3)$. The source constructs a threefold $X_{c_0}$ for every admissible parameter but does not decide whether different values are biholomorphic or form a holomorphic deformation family, nor how the parameter maps to the Kuranishi space. The proposed construction also leaves a Hodge number, commonly stated as the expected value $h^{1,2}=1$, to be determined.
+
+\subsection{A genuinely independent second construction}
+
+The strongest confirmation would not be another audit of the same charts, but a second construction reaching the same object through different local models or a different moduli interpretation. The projector and unit-defect principles indicate what such a construction must conserve even if its geometry looks different.
+
+\section{Conclusion}\label{sec:conclusion}
+
+The proposed complex six-sphere construction becomes much easier to understand when its detailed implementation and its global recognition are separated without being disconnected.
+
+The source creates the complex world from the triangle action $\Delta(3,4,\infty)\curvearrowright\mathfrak H$: equivariant periods descend to a non-polarizable family of complex two-tori over the smooth locus of $\Pone(3,4,\infty)$, closed by one explicit toric degeneration and two logarithmic transforms, then assembled by a proper Hausdorff gluing theorem. The hard obstruction is the indefinite cusp geometry, expressed by square-zero monodromy that preserves a unique alternating form but admits no positive polarization.
+
+The short recognition then reduces to two unit certificates. Locally,
+\[
+|\det B_0|=1
+\]
+means that the cusp exchange is integral and complete. Together with the $\Aroot$ incidence pattern, it gives one toric component and Euler characteristic $2$. Globally,
+\[
+p=12\ell_0-4\ell_1-3\ell_2=-1
+\]
+means that the final relation is an integral isomorphism: no fundamental-group or middle-cohomology residue survives.
+
+The two displayed finite invariant directions are generated by cyclic averaging from the chosen primitive seed $\wideg$. Their relative sign is not hidden inside the projector; it is the global choice that turns the defect from $-7$ into the unit $-1$. This separation makes the mechanism both shorter and more precise.
+
+The non-normal cusp fibre plays one further role. Its conductor supports a genuine ambient differential that disappears in the torsion-free quotient. That explicit ghost section identifies the error in the published CDP reduction and explains why that argument does not disprove the construction.
+
+The resulting proof can be summarized without metaphor:
+\[
+\boxed{
+\begin{gathered}
+\text{import the constructed complex family}
++\text{ import its boundary maps}
+\\
++\text{ project to invariant directions}
++\text{ exchange unimodularly at the cusp}
+\\
++\text{ choose the signed unit gluing}
+\Longrightarrow S^6.
+\end{gathered}
+}
+\]
+The long manuscript remains the detailed implementation; this note supplies its compact mathematical interface. The companion Lean library records a useful beginning of the algebraic layer and its exact certificates. Extending those modules through the geometric boundary maps and the analytic construction is the natural next contribution to the global formal library.
+
+\section{Bibliography}\label{sec:bibliography}
+
+The first two entries are the direct sources for the construction and its explanatory map. The remaining entries are the principal historical and mathematical imports used in this account. Exact section and theorem pointers in the body serve as routes from the short interface back into the detailed proofs.
+
+\begingroup
+\makeatletter
+\let\savedsection\section
+\renewcommand{\section}{\@ifstar{\@gobble}{\savedsection}}
+\makeatother
+\begin{thebibliography}{99}
+
+\bibitem{S6}
+Anonymous AI-generated manuscript,
+\emph{A compact complex threefold fibred by tori over the projective line, and the six-sphere},
+108 pages, 2026. Source snapshot consulted 28 August 2026;
+SHA-256 \path{283bba102dd1d5dc346af81b28145bdaaea6654398d5032e76e97bafb9a858f2}.
+\url{https://alpo.ge/s6.pdf}.
+
+\bibitem{Feng}
+T. Feng,
+\emph{A complex structure on the six-sphere?},
+AI-assisted mathematical distillation with editorial introduction, 25 August 2026,
+\url{https://math.berkeley.edu/~fengt/S6.html}.
+
+\bibitem{BorelSerre}
+A. Borel and J.-P. Serre,
+\emph{Groupes de Lie et puissances r\'eduites de Steenrod},
+Amer. J. Math. \textbf{75} (1953), 409--448.
+
+\bibitem{BHPV}
+W. Barth, K. Hulek, C. Peters, and A. Van de Ven,
+\emph{Compact Complex Surfaces}, second edition,
+Ergebnisse der Mathematik und ihrer Grenzgebiete, Springer, 2004.
+
+
+\bibitem{LeBrun}
+C. LeBrun,
+\emph{Orthogonal complex structures on $S^6$},
+Proc. Amer. Math. Soc. \textbf{101} (1987), no.~1, 136--138.
+
+\bibitem{Clemens}
+C. H. Clemens,
+\emph{Degeneration of K\"ahler manifolds},
+Duke Math. J. \textbf{44} (1977), 215--290.
+
+\bibitem{CDP20}
+F. Campana, J.-P. Demailly, and T. Peternell,
+\emph{The algebraic dimension of compact complex threefolds with vanishing second Betti number},
+Compos. Math. \textbf{156} (2020), 679--696;\newline
+arXiv:1904.11179.
+
+\bibitem{Hopf}
+H. Hopf,
+\emph{Zur Topologie der komplexen Mannigfaltigkeiten},
+in \emph{Studies and Essays Presented to R. Courant on his 60th Birthday},
+Interscience, 1948, 167--185.
+
+\bibitem{KM}
+M. A. Kervaire and J. W. Milnor,
+\emph{Groups of homotopy spheres. I},
+Ann. of Math. (2) \textbf{77} (1963), 504--537.
+
+\bibitem{Mumford}
+D. Mumford,
+\emph{An analytic construction of degenerating abelian varieties over complete rings},
+Compositio Math. \textbf{24} (1972), 239--272.
+
+\bibitem{Orlik}
+P. Orlik,
+\emph{Seifert Manifolds},
+Lecture Notes in Mathematics, vol. 291, Springer, 1972.
+
+\bibitem{Smale}
+S. Smale,
+\emph{Generalized Poincar\'e's conjecture in dimensions greater than four},
+Ann. of Math. (2) \textbf{74} (1961), 391--406.
+
+\end{thebibliography}
+\endgroup
+
+\end{document}

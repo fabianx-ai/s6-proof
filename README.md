@@ -1,96 +1,71 @@
-# Projectors and Unit Defect in the Proposed Complex Six-Sphere Construction
+# Projectors and Unit Defect in the Proposed Complex Six-Sphere Construction - Version 10
 
-This repository contains a short structural reorganization of the proposed
-complex structure on the smooth six-sphere.
+Public repository: https://github.com/fabianx-ai/s6-proof
 
-## Deliverables
+This bundle contains Version 10 of the short paper, the companion Lean source, exact finite checkers,
+source-interface audit packages, the supplied Claude Fable V9 review that motivated this patch, and the
+immutable identity record for the external 108-page source.
 
-- `s6_short_proof.tex` - publication-ready LaTeX source.
-- `s6_short_proof.pdf` - compiled 20-page paper.
-- `s6_short_proof_v2.tex`, `s6_short_proof_v2.pdf` - version 2 (27 Aug 2026): dual-proof section 5 (blackboard
-  proof closes), residue register 4.9, lessons 6.12. Sections renumbered vs v1
-  (formalization interfaces now 6.9, open directions now section 7); the section-6
-  lemma statements targeted by the Lean development are unchanged.
-- `S6Shortcuts.lean` - a no-placeholder Lean scaffold for the finite matrix and
-  arithmetic certificates.
-- `verify_certificates.py` - exact SymPy verification of the same finite core.
-- `verification-report.txt` - output from the successful exact check.
-- `AUDIT_CHECKLIST.md` - the remaining analytic and integral verification
-  boundary, organized for independent review.
+Version 10 is intentionally a **pre-publication candidate**: the paper is built, but the modified Lean tree has
+not been rebuilt under its pinned environment. Every missing formal result is marked `PLACEHOLDER` and can be
+found with `checks/scan_placeholders.py`.
 
-## Mathematical status
+## Version 10 changes
 
-The original 108-page manuscript has not yet received an independent community
-verification and conflicts with a published result of Campana-Demailly-Peternell.
-The paper therefore makes a precise distinction:
+- Uses the monodromy-invariant closure of the cusp vanishing lattice at the pi1 interface.
+- Makes the geometric zero-winding content of `ell0 = 0` explicit.
+- Routes the Leray package through Theorem B.1 and Proposition 7.14 before Propositions 7.26-7.27.
+- Restores and discharges the CDP non-torsion proviso.
+- Credits and sharpens the split-extension comparison.
+- Exposes the admissible period parameter `c0` and condition `(beta3)`.
+- Distinguishes canonical projectors from the chosen seed and records the complete seed-integrality lattice.
+- Makes determinant, basis, signature, and freeness conventions explicit.
+- Proposes kernel-reducible replacements for all concrete native computation certificates and adds an axiom
+  audit driver; the fresh build remains a visible publication gate.
 
-1. The **local analytic construction package** contains the period family, the
-   toric cusp quotient, the two logarithmic transforms, and the integral
-   specialization data.
-2. Conditional on that package, the paper gives a short proof that the resulting
-   compact complex threefold is diffeomorphic to the standard `S^6`.
-3. The finite algebraic core is independently checked exactly and is supplied as
-   a Lean formalization scaffold.
+## Contents
 
-The central new shortcuts are:
+- `paper/s6_short_proof_v10.pdf` - rendered paper.
+- `paper/s6_short_proof_v10.tex` - self-contained LaTeX source.
+- `sources/` - immutable identity metadata for the linked, non-redistributed source manuscript.
+- `formal/lean-source/` - proposed V10 Lean tree.
+- `formal/archive/b3c0a190/` - historical pre-V10 source and successful build evidence.
+- `formal/BUILD_REPORT_V10.md`, `AXIOM_REPORT_V10.txt`, `lean-build-v10.log` - current publication gates.
+- `formal/SOURCE_TREE_V10.sha256` - current Lean source-tree manifest.
+- `audits/templates/` - blank operational receipts; not evidence.
+- `audits/reviews/` - supplied completed review documents.
+- `audits/STATUS.md` - separate interface-fidelity and independent-verification statuses.
+- `checks/` - exact checkers, source-identity check, and placeholder scanner.
+- `MANIFEST.sha256` - final release-tree integrity manifest.
 
-- the two twist vectors are cyclic Reynolds projections of one primitive seed;
-- the cusp is a square-zero rank-two exchange with a unimodular transfer matrix;
-- the global topology is controlled by the unit defect
-  `p = 12*l0 - 4*l1 - 3*l2 = -1`;
-- the generic projected-seed defect for orders `(m,n)` is `m-n`.
+## Building the paper
 
-## Build the paper
-
-```bash
-python /home/oai/skills/pdfs/scripts/latex_to_pdf.py \
-  s6_short_proof.tex -o s6_short_proof.pdf
+```sh
+cd paper
+latexmk -pdf -interaction=nonstopmode -halt-on-error s6_short_proof_v10.tex
 ```
 
-A standard alternative is:
+## Exact non-Lean checks
 
-```bash
-latexmk -pdf s6_short_proof.tex
+```sh
+python checks/verify_certificates.py
+python checks/audit_checks.py
+python checks/verify_source_identity.py
+python checks/scan_placeholders.py
 ```
 
-## Verify the exact finite certificates
+## Formal publication gate
 
-```bash
-python verify_certificates.py
-```
+Follow `formal/REPRODUCE.md`. The required fresh V10 build and axiom report must replace every formal
+`PLACEHOLDER`. Do not use the historical pre-V10 build log as evidence for the modified source.
 
-All checks passed in the artifact-generation environment.
+## Final release gate
 
-## Check the Lean file
+Before GitHub/Zenodo publication:
 
-Copy `S6Shortcuts.lean` into a recent Mathlib checkout and run:
-
-```bash
-lake env lean S6Shortcuts.lean
-```
-
-The artifact-generation environment did not contain Lean or Mathlib, so the Lean
-file could not be compiled here. The file uses only `import Mathlib`, explicit
-finite matrices, `native_decide`, `norm_num`, and `ring`; it contains no `sorry`,
-`admit`, or custom axioms.
-
-## Suggested review order
-
-1. Run the finite Python and Lean certificates.
-2. Audit the period torsors and the global lattice inequality.
-3. Audit holomorphic extension and proper discontinuity at the cusp.
-4. Audit freeness and signs in the two logarithmic transforms.
-5. Audit the order-four integral specialization index.
-6. Audit the common sign and integral generators in the three Leray
-   transgressions.
-7. Only then treat the final recognition theorem as unconditional.
-
-## Public release
-
-The files are prepared for public review. No copyright license has been selected
-on the authors' behalf; add the intended license before publishing or opening a
-public repository.
-
-Note: `SHA256SUMS` attests the current tree. `S6Shortcuts.lean` was minimally
-repaired after delivery (import ordering; see commit eb4dcf4); the originally
-delivered file and its hash are preserved in git history at commit d13b8f3.
+1. run the pinned Lean build and axiom audit;
+2. replace all `PLACEHOLDER` values with actual evidence;
+3. run `python checks/scan_placeholders.py --require-zero`;
+4. rebuild the paper and rerun all exact checks;
+5. regenerate `MANIFEST.sha256`;
+6. update and tag the public repository atomically.

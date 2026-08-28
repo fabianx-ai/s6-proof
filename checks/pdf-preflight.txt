@@ -1,0 +1,6 @@
+PDF: /mnt/data/s6-short-proof-v10-release/paper/s6_short_proof_v10.pdf
+Pages: 29
+Encrypted: False
+Openable (PyMuPDF): True
+Likely scanned: False
+XFA present: False

@@ -1,0 +1,10 @@
+V10 current Lean source static scan (not a compilation)
+
+$ rg -n native_decide formal/lean-source
+PASS: no matches
+
+$ count decide proofs in concrete files
+COUNT=32
+
+$ source hygiene (excluding axiom-audit commands and comments)
+PASS: no sorry/admit/unsafe matches

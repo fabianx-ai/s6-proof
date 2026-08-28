@@ -1,0 +1,3 @@
+PASS release identity metadata: descriptor, checksum file, and paper agree
+PINNED SHA-256: 283bba102dd1d5dc346af81b28145bdaaea6654398d5032e76e97bafb9a858f2
+RAW SOURCE NOT REDISTRIBUTED: supply a local s6.pdf path to verify its bytes

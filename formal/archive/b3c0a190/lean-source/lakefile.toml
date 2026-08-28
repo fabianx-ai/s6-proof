@@ -1,0 +1,14 @@
+name = "s6"
+version = "0.1.0"
+defaultTargets = ["S6Shortcuts", "S6"]
+
+[[require]]
+name = "mathlib"
+git = "https://github.com/leanprover-community/mathlib4.git"
+rev = "0531bb79fea20efc9ce6942db46b96be5a919400"
+
+[[lean_lib]]
+name = "S6Shortcuts"
+
+[[lean_lib]]
+name = "S6"
