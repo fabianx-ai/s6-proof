@@ -10,9 +10,9 @@ Run with the pinned toolchain after `lake build`:
 lake env lean S6/AxiomAudit.lean
 ```
 
-The resulting output must be copied to `formal/AXIOM_REPORT_V10.txt`. Before publication it must contain
-no generated `compiler-evaluated decision tactic` axiom and no `Lean.trustCompiler` dependency. This file is shipped before that
-run on purpose; the report remains a visible `PLACEHOLDER` release gate.
+The complete release-run output is recorded in `formal/AXIOM_REPORT_V10.txt`. Acceptance requires that it
+contain no generated compiler-evaluation trust axiom. Ordinary foundational axioms inherited from Lean and
+Mathlib remain visible in the report.
 -/
 
 -- Concrete finite certificates from `S6Shortcuts`.
