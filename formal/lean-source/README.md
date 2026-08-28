@@ -20,7 +20,8 @@ complex threefold is the standard smooth six-sphere.
 ## V10 trust-boundary change
 
 Every concrete use of the compiler-evaluated decision tactic in the historical checkout has been
-replaced by a kernel-reducible `decide` proof. The tree also contains
+replaced by an explicit kernel-checked proof using extensionality, finite case splits, and `norm_num`.
+The tree also contains
 `S6/AxiomAudit.lean`, which prints the axiom dependencies of the exported certificates.
 
 The modified V10 tree is covered by the completed build and per-theorem axiom records in
