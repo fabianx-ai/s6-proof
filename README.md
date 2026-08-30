@@ -1,3 +1,13 @@
+Note:
+
+V10 paper has been proven machine-checked via S6Shortcuts.lean in:
+
+https://github.com/fabianx-ai/HopfProblem/tree/refactor/v10-section6-lib
+
+In the Lib/ folder you find all the potential PRs from mathlib4/ derived and extracted from the 108 page Lean formalization.
+
+This repository contains the original paper V10 and the helper Lemmas as Lean (before the long machine checked version existed).
+
 # Projectors and Unit Defect in the Proposed Complex Six-Sphere Construction - Version 10
 
 Public repository: https://github.com/fabianx-ai/s6-proof
